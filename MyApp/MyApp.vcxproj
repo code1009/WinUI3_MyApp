@@ -123,6 +123,12 @@
     <ClInclude Include="UI\MainWindow.xaml.h">
       <DependentUpon>UI\MainWindow.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="UI\Page1.xaml.h">
+      <DependentUpon>UI\Page1.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="UI\Page2.xaml.h">
+      <DependentUpon>UI\Page2.xaml</DependentUpon>
+    </ClInclude>
     <ClInclude Include="UI\pch.h" />
     <ClInclude Include="UI\SettingsPage.xaml.h">
       <DependentUpon>UI\SettingsPage.xaml</DependentUpon>
@@ -135,6 +141,8 @@
     <Page Include="Styles.xaml" />
     <Page Include="UI\MainPage.xaml" />
     <Page Include="UI\MainWindow.xaml" />
+    <Page Include="UI\Page1.xaml" />
+    <Page Include="UI\Page2.xaml" />
     <Page Include="UI\SettingsPage.xaml" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +163,12 @@
     </ClCompile>
     <ClCompile Include="UI\MainWindow.xaml.cpp">
       <DependentUpon>UI\MainWindow.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="UI\Page1.xaml.cpp">
+      <DependentUpon>UI\Page1.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="UI\Page2.xaml.cpp">
+      <DependentUpon>UI\Page2.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="UI\SettingsPage.xaml.cpp">
       <DependentUpon>UI\SettingsPage.xaml</DependentUpon>

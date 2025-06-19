@@ -24,10 +24,8 @@ namespace winrt::MyApp::implementation
         
         _Scenarios = single_threaded_observable_vector<Scenario>(
             {
-                /*
-                Scenario{ L"Scenario 1", hstring(name_of<MyApp::Page1>())},
-                Scenario{ L"Scenario 2", hstring(name_of<MyApp::Page2>())}
-                */
+                Scenario{ L"페이지1", hstring(name_of<MyApp::Page1>())},
+                Scenario{ L"페이지2", hstring(name_of<MyApp::Page2>())}
             }
         );
     }
