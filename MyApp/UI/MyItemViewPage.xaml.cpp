@@ -60,8 +60,8 @@ namespace winrt::MyApp::implementation
 
     void MyItemViewPage::ItemGridView_SelectionChanged(winrt::Windows::Foundation::IInspectable const& /*sender*/, winrt::Microsoft::UI::Xaml::Controls::SelectionChangedEventArgs const& e)
     {
-		//winrt::MyApp::MyItem persistedItem = e.OriginalSource().as<winrt::Microsoft::UI::Xaml::Controls::GridView>().SelectedItem().as < MyApp::MyItem
-        
+		OutputDebugStringW((L"Selected Item = " + std::to_wstring(ItemGridView().SelectedItems().Size()) + L"\n").c_str());
+
         for (auto x : ItemGridView().SelectedItems())
         {
             winrt::MyApp::MyItem persistedItem = x.as<winrt::MyApp::MyItem>();
