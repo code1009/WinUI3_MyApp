@@ -19,6 +19,13 @@ namespace winrt::MyApp::implementation
     MyItemEditPage::MyItemEditPage()
     {
         InitializeComponent();
+
+        OutputDebugString(L"MyItemEditPage");
+    }
+
+    MyItemEditPage::~MyItemEditPage()
+    {
+        OutputDebugString(L"~MyItemEditPage");
     }
 
     void MyItemEditPage::OnNavigatedTo(NavigationEventArgs const& eventArgs)
@@ -32,9 +39,11 @@ namespace winrt::MyApp::implementation
             SubtitleTextBox().Text(_Item.Subtitle());
             DescriptionTextBox().Text(_Item.Description());
         }
+
+        OutputDebugString(L"MyItemEditPage.OnNavigatedTo");
     }
 
-    void MyItemEditPage::OkButton_Click(Windows::Foundation::IInspectable const&, Microsoft::UI::Xaml::RoutedEventArgs const&)
+    void MyItemEditPage::OkButton_Click(Windows::Foundation::IInspectable const& /*sender*/, Microsoft::UI::Xaml::RoutedEventArgs const& /*eventArgs*/)
     {
         auto title = TitleTextBox().Text();
         auto subtitle = SubtitleTextBox().Text();
@@ -50,7 +59,7 @@ namespace winrt::MyApp::implementation
        }
     }
 
-    void MyItemEditPage::CancelButton_Click(Windows::Foundation::IInspectable const&, Microsoft::UI::Xaml::RoutedEventArgs const&)
+    void MyItemEditPage::CancelButton_Click(Windows::Foundation::IInspectable const& /*sender*/, Microsoft::UI::Xaml::RoutedEventArgs const& /*eventArgs*/)
     {
         if (Frame().CanGoBack())
         {

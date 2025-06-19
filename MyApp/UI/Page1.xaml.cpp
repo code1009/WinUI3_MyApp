@@ -34,22 +34,22 @@ namespace winrt::MyApp::implementation
         }
     }
 
-    void Page1::SuccessMessage_Click(IInspectable const&, RoutedEventArgs const&)
+    void Page1::SuccessMessage_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
         _MainPage.NotifyUser(L"Everything was ok!", InfoBarSeverity::Success);
     }
 
-    void Page1::ErrorMessage_Click(IInspectable const&, RoutedEventArgs const&)
+    void Page1::ErrorMessage_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
         _MainPage.NotifyUser(L"Something went wrong.", InfoBarSeverity::Error);
     }
 
-    void Page1::InformationalMessage_Click(IInspectable const&, RoutedEventArgs const&)
+    void Page1::InformationalMessage_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
         _MainPage.NotifyUser(L"This is the informational bar.", InfoBarSeverity::Informational);
     }
 
-    void Page1::ClearMessage_Click(IInspectable const&, RoutedEventArgs const&)
+    void Page1::ClearMessage_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
         _MainPage.NotifyUser(L"", InfoBarSeverity::Informational);
     }

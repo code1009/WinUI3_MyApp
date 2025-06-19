@@ -66,7 +66,7 @@ namespace winrt::MyApp::implementation
         infoBar().Severity(severity);
     }
 
-    void MainPage::NavView_Loaded(IInspectable const&, RoutedEventArgs const&)
+    void MainPage::NavView_Loaded(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
         for (auto&& s : Scenarios())
         {
@@ -93,24 +93,24 @@ namespace winrt::MyApp::implementation
         }
     }
 
-    void MainPage::NavView_ItemInvoked(NavigationView const&, NavigationViewItemInvokedEventArgs const& args)
+    void MainPage::NavView_ItemInvoked(NavigationView const& /*sender*/, NavigationViewItemInvokedEventArgs const& eventArgs)
     {
-        if (args.IsSettingsInvoked() == true)
+        if (eventArgs.IsSettingsInvoked() == true)
         {
             hstring xamltypename = winrt::xaml_typename<SettingsPage>().Name;
-            NavView_Navigate(xamltypename, args.RecommendedNavigationTransitionInfo());
+            NavView_Navigate(xamltypename, eventArgs.RecommendedNavigationTransitionInfo());
         }
-        else if (args.InvokedItemContainer() != nullptr)
+        else if (eventArgs.InvokedItemContainer() != nullptr)
         {
-            auto navItemTag = winrt::unbox_value<hstring>(args.InvokedItemContainer().Tag());
+            auto navItemTag = winrt::unbox_value<hstring>(eventArgs.InvokedItemContainer().Tag());
             if (navItemTag != L"")
             {
-                NavView_Navigate(navItemTag, args.RecommendedNavigationTransitionInfo());
+                NavView_Navigate(navItemTag, eventArgs.RecommendedNavigationTransitionInfo());
             }
         }
     }
 
-    void MainPage::NavView_Navigate(hstring navItemTag, NavigationTransitionInfo const&)
+    void MainPage::NavView_Navigate(hstring navItemTag, NavigationTransitionInfo const& /*eventArgs*/)
     {
         TypeName pageType;
 
@@ -137,7 +137,7 @@ namespace winrt::MyApp::implementation
         }
     }
 
-    void MainPage::NavView_BackRequested(NavigationView const&, NavigationViewBackRequestedEventArgs const&)
+    void MainPage::NavView_BackRequested(NavigationView const& /*sender*/, NavigationViewBackRequestedEventArgs const& /*eventArgs*/)
     {
         if (ContentFrame().CanGoBack())
         {
@@ -145,7 +145,7 @@ namespace winrt::MyApp::implementation
         }
     }
 
-    void MainPage::ContentFrame_Navigated(IInspectable const&, NavigationEventArgs const& e)
+    void MainPage::ContentFrame_Navigated(IInspectable const& /*sender*/, NavigationEventArgs const& eventArgs)
     {
         NavView().IsBackEnabled(ContentFrame().CanGoBack());
 
@@ -161,7 +161,7 @@ namespace winrt::MyApp::implementation
             {
                 auto navViewItem = item.try_as<NavigationViewItem>();
                 if (navViewItem != nullptr &&
-                    winrt::unbox_value<hstring>(navViewItem.Tag()) == e.SourcePageType().Name)
+                    winrt::unbox_value<hstring>(navViewItem.Tag()) == eventArgs.SourcePageType().Name)
                 {
                     NavView().SelectedItem(navViewItem);
                     NavView().Header(navViewItem.Content());

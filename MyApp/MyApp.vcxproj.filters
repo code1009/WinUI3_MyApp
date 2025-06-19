@@ -7,7 +7,13 @@
     <ClCompile Include="pch.cpp">
       <Filter>Entry</Filter>
     </ClCompile>
-    <ClCompile Include="Configuration.cpp">
+    <ClCompile Include="UI\Configuration.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\MyItem.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\MyViewModel.cpp">
       <Filter>UI</Filter>
     </ClCompile>
   </ItemGroup>
@@ -52,14 +58,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natstepfilter">
-      <Filter>BuildSettings</Filter>
-    </Natvis>
-    <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natvis">
-      <Filter>BuildSettings</Filter>
-    </Natvis>
-  </ItemGroup>
-  <ItemGroup>
     <Manifest Include="app.manifest">
       <Filter>BuildSettings</Filter>
     </Manifest>
@@ -78,16 +76,25 @@
     <Page Include="Styles.xaml">
       <Filter>Entry</Filter>
     </Page>
-    <Page Include="App.xaml">
-      <Filter>Entry</Filter>
-    </Page>
-    <Page Include="MainPage.xaml">
+    <Page Include="UI\MainPage.xaml">
       <Filter>UI</Filter>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="UI\MainWindow.xaml">
       <Filter>UI</Filter>
     </Page>
-    <Page Include="SettingsPage.xaml">
+    <Page Include="UI\MyItemEditPage.xaml">
+      <Filter>UI</Filter>
+    </Page>
+    <Page Include="UI\MyItemViewPage.xaml">
+      <Filter>UI</Filter>
+    </Page>
+    <Page Include="UI\Page1.xaml">
+      <Filter>UI</Filter>
+    </Page>
+    <Page Include="UI\Page2.xaml">
+      <Filter>UI</Filter>
+    </Page>
+    <Page Include="UI\SettingsPage.xaml">
       <Filter>UI</Filter>
     </Page>
   </ItemGroup>
@@ -95,13 +102,51 @@
     <ClInclude Include="pch.h">
       <Filter>Entry</Filter>
     </ClInclude>
-    <ClInclude Include="Configuration.h">
+    <ClInclude Include="UI\Configuration.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\MyItem.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\MyViewModel.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\pch.h">
       <Filter>UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Midl Include="Project.idl">
-      <Filter>Entry</Filter>
+    <Midl Include="UI\MainWindow.idl">
+      <Filter>UI</Filter>
     </Midl>
+    <Midl Include="UI\MyItem.idl">
+      <Filter>UI</Filter>
+    </Midl>
+    <Midl Include="UI\MyViewModel.idl">
+      <Filter>UI</Filter>
+    </Midl>
+    <Midl Include="UI\MyItemViewPage.idl">
+      <Filter>UI</Filter>
+    </Midl>
+    <Midl Include="UI\MyItemEditPage.idl">
+      <Filter>UI</Filter>
+    </Midl>
+    <Midl Include="UI\Page1.idl">
+      <Filter>UI</Filter>
+    </Midl>
+    <Midl Include="UI\Page2.idl">
+      <Filter>UI</Filter>
+    </Midl>
+    <Midl Include="UI\SettingsPage.idl">
+      <Filter>UI</Filter>
+    </Midl>
+    <Midl Include="UI\MainPage.idl">
+      <Filter>UI</Filter>
+    </Midl>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="UI\App.xaml">
+      <Filter>UI</Filter>
+    </ApplicationDefinition>
   </ItemGroup>
 </Project>

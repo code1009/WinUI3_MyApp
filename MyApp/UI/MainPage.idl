@@ -1,0 +1,17 @@
+﻿import "UI/MyItem.idl";
+
+namespace MyApp
+{  
+    struct Scenario
+    {
+        String Title;
+        String ClassName;
+    };
+
+    runtimeclass MainPage : Microsoft.UI.Xaml.Controls.Page
+    {
+        MainPage();
+
+        void NotifyUser(String strMessage, Microsoft.UI.Xaml.Controls.InfoBarSeverity severity);
+    }
+}

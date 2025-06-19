@@ -1,0 +1,10 @@
+﻿import "UI/MyItem.idl";
+
+namespace MyApp
+{
+    [default_interface]
+    runtimeclass MyItemEditPage : Microsoft.UI.Xaml.Controls.Page
+    {
+        MyItemEditPage();
+    }
+}

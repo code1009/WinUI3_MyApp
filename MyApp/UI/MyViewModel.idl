@@ -1,0 +1,14 @@
+﻿import "UI/MyItem.idl";
+
+namespace MyApp
+{
+    [default_interface]
+    runtimeclass MyViewModel
+    {
+        MyViewModel();
+
+        static MyViewModel Instance();
+
+		Windows.Foundation.Collections.IObservableVector<MyItem> Items{ get; };
+    }
+}

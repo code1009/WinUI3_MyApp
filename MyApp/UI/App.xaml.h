@@ -10,7 +10,7 @@ namespace winrt::MyApp::implementation
         App();
 
     public:
-        void OnLaunched(Microsoft::UI::Xaml::LaunchActivatedEventArgs const&);
+        void OnLaunched(Microsoft::UI::Xaml::LaunchActivatedEventArgs const& eventArgs);
 
     private:
         winrt::Microsoft::UI::Xaml::Window _Window{ nullptr };

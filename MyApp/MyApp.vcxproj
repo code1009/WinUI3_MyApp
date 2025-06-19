@@ -156,7 +156,40 @@
     <Page Include="UI\SettingsPage.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <Midl Include="Project.idl" />
+    <Midl Include="UI\MainPage.idl">
+      <DependentUpon>UI\MainPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="UI\MyItem.idl">
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="UI\MyItemEditPage.idl">
+      <DependentUpon>UI\MyItemEditPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="UI\MyItemViewPage.idl">
+      <DependentUpon>UI\MyItemViewPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="UI\MyViewModel.idl">
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="UI\Page1.idl">
+      <DependentUpon>UI\Page1.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="UI\Page2.idl">
+      <DependentUpon>UI\Page2.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="UI\MainWindow.idl">
+      <DependentUpon>UI\MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="UI\SettingsPage.idl">
+      <DependentUpon>UI\SettingsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />

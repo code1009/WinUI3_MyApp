@@ -49,7 +49,7 @@ namespace winrt::MyApp::implementation
         }
     }
 
-    void SettingsPage::OnThemeRadioButtonChecked(IInspectable const& sender, RoutedEventArgs const&)
+    void SettingsPage::OnThemeRadioButtonChecked(IInspectable const& sender, RoutedEventArgs const& /*eventArgs*/)
     {
         auto radioButton = sender.as<RadioButton>();
         auto selectedTheme = unbox_value<ElementTheme>(radioButton.Tag());

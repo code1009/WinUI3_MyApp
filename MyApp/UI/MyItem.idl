@@ -1,0 +1,17 @@
+﻿namespace MyApp
+{
+    // https://github.com/ComCatalin/BookstoreWinRT/blob/master/BookstoreUWP/BookstoreViewModel.cpp
+    // https://github.com/OpenKneeboard/OpenKneeboard/tree/master/src/app/app-winui3
+    
+    //-----------------------------------------------------------------------
+    [default_interface]
+    runtimeclass MyItem : Microsoft.UI.Xaml.Data.INotifyPropertyChanged
+    {
+        String Title;
+        String Subtitle;
+        String Description;
+
+        MyItem();
+        MyItem(String title, String subtitle, String description);
+    }
+}

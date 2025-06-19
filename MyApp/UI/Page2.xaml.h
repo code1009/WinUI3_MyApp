@@ -13,7 +13,7 @@ namespace winrt::MyApp::implementation
         Page2();
 
     public:
-        void OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e);
+        void OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& eventArgs);
     };
 }
 

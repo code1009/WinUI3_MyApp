@@ -51,14 +51,14 @@ namespace winrt::MyApp::implementation
 		return MyViewModel::Instance().Items();
     }
 
-    void MyItemViewPage::ItemGridView_ItemClick(Windows::Foundation::IInspectable const, Microsoft::UI::Xaml::Controls::ItemClickEventArgs const e)
+    void MyItemViewPage::ItemGridView_ItemClick(Windows::Foundation::IInspectable const& /*sender*/, Microsoft::UI::Xaml::Controls::ItemClickEventArgs const& eventArgs)
     {
-        winrt::MyApp::MyItem persistedItem = e.ClickedItem().as<MyApp::MyItem>();
+        winrt::MyApp::MyItem persistedItem = eventArgs.ClickedItem().as<MyApp::MyItem>();
 
-        Frame().Navigate(xaml_typename<winrt::MyApp::MyItemEditPage>(), e.ClickedItem()); // , m_suppress);
+        Frame().Navigate(xaml_typename<winrt::MyApp::MyItemEditPage>(), eventArgs.ClickedItem()); // , m_suppress);
     }
 
-    void MyItemViewPage::ItemGridView_SelectionChanged(winrt::Windows::Foundation::IInspectable const& /*sender*/, winrt::Microsoft::UI::Xaml::Controls::SelectionChangedEventArgs const& e)
+    void MyItemViewPage::ItemGridView_SelectionChanged(winrt::Windows::Foundation::IInspectable const& /*sender*/, winrt::Microsoft::UI::Xaml::Controls::SelectionChangedEventArgs const& /*eventArgs*/)
     {
 		OutputDebugStringW((L"Selected Item = " + std::to_wstring(ItemGridView().SelectedItems().Size()) + L"\n").c_str());
 
