@@ -12,6 +12,7 @@
 
 #include "MyViewModel.h"
 #include "MyItemEditPage.xaml.h"
+#include "NavigationParam.h"
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
@@ -55,7 +56,14 @@ namespace winrt::MyApp::implementation
     {
         winrt::MyApp::MyItem persistedItem = eventArgs.ClickedItem().as<MyApp::MyItem>();
 
-        Frame().Navigate(xaml_typename<winrt::MyApp::MyItemEditPage>(), eventArgs.ClickedItem()); // , m_suppress);
+        //Frame().Navigate(xaml_typename<winrt::MyApp::MyItemEditPage>(), eventArgs.ClickedItem()); // , m_suppress);
+
+        auto param = winrt::make<winrt::MyApp::implementation::NavigationParam>();
+
+        param.MainPage(_MainPage);
+        param.Param0(eventArgs.ClickedItem());
+
+        Frame().Navigate(xaml_typename<winrt::MyApp::MyItemEditPage>(), param);
     }
 
     void MyItemViewPage::ItemGridView_SelectionChanged(winrt::Windows::Foundation::IInspectable const& /*sender*/, winrt::Microsoft::UI::Xaml::Controls::SelectionChangedEventArgs const& /*eventArgs*/)

@@ -131,6 +131,7 @@
       <DependentUpon>UI\MyItemViewPage.xaml</DependentUpon>
     </ClInclude>
     <ClInclude Include="UI\MyViewModel.h" />
+    <ClInclude Include="UI\NavigationParam.h" />
     <ClInclude Include="UI\Page1.xaml.h">
       <DependentUpon>UI\Page1.xaml</DependentUpon>
     </ClInclude>
@@ -174,6 +175,7 @@
     <Midl Include="UI\MyViewModel.idl">
       <SubType>Code</SubType>
     </Midl>
+    <Midl Include="UI\NavigationParam.idl" />
     <Midl Include="UI\Page1.idl">
       <DependentUpon>UI\Page1.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -215,6 +217,7 @@
       <DependentUpon>UI\MyItemViewPage.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="UI\MyViewModel.cpp" />
+    <ClCompile Include="UI\NavigationParam.cpp" />
     <ClCompile Include="UI\Page1.xaml.cpp">
       <DependentUpon>UI\Page1.xaml</DependentUpon>
     </ClCompile>

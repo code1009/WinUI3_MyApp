@@ -28,10 +28,14 @@
                     </Grid>
 
                     <GridView x:Name="ItemGridView" ItemsSource="{x:Bind Items}" Margin="0,36,0,0" 
+
                         IsMultiSelectCheckBoxEnabled="True"
                         SelectionMode="Multiple"
                         SelectionChanged="ItemGridView_SelectionChanged"
-				        >
+
+                        IsItemClickEnabled="True"
+                        ItemClick="ItemGridView_ItemClick"
+                        >
 <!--
                         IsItemClickEnabled="True"
                         ItemClick="ItemGridView_ItemClick"

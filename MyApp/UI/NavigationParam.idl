@@ -1,0 +1,13 @@
+﻿import "UI/MainPage.idl";
+
+namespace MyApp
+{  
+    [default_interface]
+    runtimeclass NavigationParam
+    {
+        MainPage MainPage;
+        IInspectable Param0;
+
+        NavigationParam();
+    };
+}

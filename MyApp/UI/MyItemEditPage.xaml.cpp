@@ -8,6 +8,8 @@
 
 #endif
 
+#include "NavigationParam.h"
+
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
 using namespace Microsoft::UI::Xaml::Controls;
@@ -30,14 +32,24 @@ namespace winrt::MyApp::implementation
 
     void MyItemEditPage::OnNavigatedTo(NavigationEventArgs const& eventArgs)
     {
-		auto item = eventArgs.Parameter().try_as<winrt::MyApp::MyItem>();
-        if (item)
-        {
-            _Item = item;
+        //auto item = eventArgs.Parameter().try_as<winrt::MyApp::MyItem>();
 
-            TitleTextBox().Text(_Item.Title());
-            SubtitleTextBox().Text(_Item.Subtitle());
-            DescriptionTextBox().Text(_Item.Description());
+        auto param = eventArgs.Parameter().try_as<winrt::MyApp::NavigationParam>();
+        
+        if (param)
+        {
+            _MainPage = param.MainPage();
+
+            auto item = param.Param0().try_as<winrt::MyApp::MyItem>();
+
+            if (item)
+            {
+                _Item = item;
+
+                TitleTextBox().Text(_Item.Title());
+                SubtitleTextBox().Text(_Item.Subtitle());
+                DescriptionTextBox().Text(_Item.Description());
+            }
         }
 
         OutputDebugString(L"MyItemEditPage.OnNavigatedTo");
@@ -45,13 +57,14 @@ namespace winrt::MyApp::implementation
 
     void MyItemEditPage::OkButton_Click(Windows::Foundation::IInspectable const& /*sender*/, Microsoft::UI::Xaml::RoutedEventArgs const& /*eventArgs*/)
     {
+        _MainPage.NotifyUser(L"확인", InfoBarSeverity::Informational);
+
         auto title = TitleTextBox().Text();
         auto subtitle = SubtitleTextBox().Text();
         auto description = DescriptionTextBox().Text();
 		_Item.Title(title);
 		_Item.Subtitle(subtitle);
 		_Item.Description(description);
-
 
        if (Frame().CanGoBack())
        {
@@ -61,6 +74,8 @@ namespace winrt::MyApp::implementation
 
     void MyItemEditPage::CancelButton_Click(Windows::Foundation::IInspectable const& /*sender*/, Microsoft::UI::Xaml::RoutedEventArgs const& /*eventArgs*/)
     {
+        _MainPage.NotifyUser(L"취소", InfoBarSeverity::Informational);
+
         if (Frame().CanGoBack())
         {
             Frame().GoBack();
