@@ -22,12 +22,12 @@ namespace winrt::MyApp::implementation
     {
         InitializeComponent();
 
-        OutputDebugStringW(L"MyItemEditPage");
+        OutputDebugStringW(L"MyItemEditPage\n");
     }
 
     MyItemEditPage::~MyItemEditPage()
     {
-        OutputDebugStringW(L"~MyItemEditPage");
+        OutputDebugStringW(L"~MyItemEditPage\n");
     }
 
     void MyItemEditPage::OnNavigatedTo(NavigationEventArgs const& eventArgs)
@@ -52,7 +52,7 @@ namespace winrt::MyApp::implementation
             }
         }
 
-        OutputDebugStringW(L"MyItemEditPage.OnNavigatedTo");
+        OutputDebugStringW(L"MyItemEditPage.OnNavigatedTo\n");
     }
 
     void MyItemEditPage::OkButton_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
