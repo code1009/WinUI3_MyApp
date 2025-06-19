@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="$(GeneratedFilesDir)module.g.cpp">
+      <Filter>BuildSettings</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Entry</Filter>
+    </ClCompile>
+    <ClCompile Include="Configuration.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\Wide310x150Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\StoreLogo.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square150x150Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square44x44Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\SplashScreen.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\LockScreenLogo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\windows-sdk.ico">
+      <Filter>Assets</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{59f517c4-c16d-48da-9927-def9f0140621}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BuildSettings">
+      <UniqueIdentifier>{01a1cfb6-2f5d-4a59-9ef5-d6bfa6fcecec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{c4d68a08-7aba-4792-b805-2c2b0f1ce0a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entry">
+      <UniqueIdentifier>{8e69a4a8-6552-4417-ad42-b32e83256f1e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natstepfilter">
+      <Filter>BuildSettings</Filter>
+    </Natvis>
+    <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natvis">
+      <Filter>BuildSettings</Filter>
+    </Natvis>
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="app.manifest">
+      <Filter>BuildSettings</Filter>
+    </Manifest>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <Filter>BuildSettings</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="readme.txt">
+      <Filter>BuildSettings</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Styles.xaml">
+      <Filter>Entry</Filter>
+    </Page>
+    <Page Include="App.xaml">
+      <Filter>Entry</Filter>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <Filter>UI</Filter>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Filter>UI</Filter>
+    </Page>
+    <Page Include="SettingsPage.xaml">
+      <Filter>UI</Filter>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>Entry</Filter>
+    </ClInclude>
+    <ClInclude Include="Configuration.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="Project.idl">
+      <Filter>Entry</Filter>
+    </Midl>
+  </ItemGroup>
+</Project>

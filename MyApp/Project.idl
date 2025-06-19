@@ -1,0 +1,30 @@
+﻿namespace MyApp
+{
+    //-----------------------------------------------------------------------
+    [default_interface]
+    runtimeclass SettingsPage : Microsoft.UI.Xaml.Controls.Page
+    {
+        SettingsPage();
+    }
+
+    //-----------------------------------------------------------------------
+    struct Scenario
+    {
+        String Title;
+        String ClassName;
+    };
+
+    runtimeclass MainPage : Microsoft.UI.Xaml.Controls.Page
+    {
+        MainPage();
+
+        void NotifyUser(String strMessage, Microsoft.UI.Xaml.Controls.InfoBarSeverity severity);
+    }
+
+    //-----------------------------------------------------------------------
+    [default_interface]
+    runtimeclass MainWindow : Microsoft.UI.Xaml.Window
+    {
+        MainWindow();
+    }
+}
