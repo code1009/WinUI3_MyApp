@@ -27,14 +27,17 @@ namespace winrt::MyApp::implementation
     {
         return _MainPage;
     }
+
     void NavigationParam::MainPage(winrt::MyApp::MainPage const& value)
     {
         _MainPage = value;
     }
+
     winrt::Windows::Foundation::IInspectable NavigationParam::Param0()
     {
         return _Param0;
     }
+
     void NavigationParam::Param0(winrt::Windows::Foundation::IInspectable const& value)
     {
         _Param0 = value;

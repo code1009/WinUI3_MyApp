@@ -22,12 +22,12 @@ namespace winrt::MyApp::implementation
     {
         InitializeComponent();
 
-        OutputDebugString(L"MyItemEditPage");
+        OutputDebugStringW(L"MyItemEditPage");
     }
 
     MyItemEditPage::~MyItemEditPage()
     {
-        OutputDebugString(L"~MyItemEditPage");
+        OutputDebugStringW(L"~MyItemEditPage");
     }
 
     void MyItemEditPage::OnNavigatedTo(NavigationEventArgs const& eventArgs)
@@ -52,10 +52,10 @@ namespace winrt::MyApp::implementation
             }
         }
 
-        OutputDebugString(L"MyItemEditPage.OnNavigatedTo");
+        OutputDebugStringW(L"MyItemEditPage.OnNavigatedTo");
     }
 
-    void MyItemEditPage::OkButton_Click(Windows::Foundation::IInspectable const& /*sender*/, Microsoft::UI::Xaml::RoutedEventArgs const& /*eventArgs*/)
+    void MyItemEditPage::OkButton_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
         _MainPage.NotifyUser(L"확인", InfoBarSeverity::Informational);
 
@@ -72,7 +72,7 @@ namespace winrt::MyApp::implementation
        }
     }
 
-    void MyItemEditPage::CancelButton_Click(Windows::Foundation::IInspectable const& /*sender*/, Microsoft::UI::Xaml::RoutedEventArgs const& /*eventArgs*/)
+    void MyItemEditPage::CancelButton_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
         _MainPage.NotifyUser(L"취소", InfoBarSeverity::Informational);
 
