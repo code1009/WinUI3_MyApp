@@ -6,7 +6,7 @@ namespace winrt::MyApp::implementation
 {
     struct Page1 : Page1T<Page1>
     {
-    public:
+    private:
         winrt::MyApp::MainPage _MainPage{ nullptr };
 
     public:

@@ -1,7 +1,11 @@
 ﻿#include "pch.h"
+
 #include "Page1.xaml.h"
+
 #if __has_include("Page1.g.cpp")
+
 #include "Page1.g.cpp"
+
 #endif
 
 using namespace winrt;

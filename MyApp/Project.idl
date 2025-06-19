@@ -1,6 +1,25 @@
 ﻿namespace MyApp
 {
     //-----------------------------------------------------------------------
+    runtimeclass MyItem : Microsoft.UI.Xaml.Data.INotifyPropertyChanged
+    {
+        String Title;
+        String Subtitle;
+        String Description;
+
+        MyItem();
+        MyItem(String title, String subtitle, String description);
+    }
+
+    runtimeclass MyItemViewPage : 
+        Microsoft.UI.Xaml.Controls.Page
+    {
+        MyItemViewPage();
+
+        Windows.Foundation.Collections.IObservableVector<MyItem> MyItems{ get; };
+    }
+
+    //-----------------------------------------------------------------------
     [default_interface]
     runtimeclass Page1 : Microsoft.UI.Xaml.Controls.Page
     {

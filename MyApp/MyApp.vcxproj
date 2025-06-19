@@ -123,6 +123,10 @@
     <ClInclude Include="UI\MainWindow.xaml.h">
       <DependentUpon>UI\MainWindow.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="UI\MyItem.h" />
+    <ClInclude Include="UI\MyItemViewPage.xaml.h">
+      <DependentUpon>UI\MyItemViewPage.xaml</DependentUpon>
+    </ClInclude>
     <ClInclude Include="UI\Page1.xaml.h">
       <DependentUpon>UI\Page1.xaml</DependentUpon>
     </ClInclude>
@@ -141,6 +145,7 @@
     <Page Include="Styles.xaml" />
     <Page Include="UI\MainPage.xaml" />
     <Page Include="UI\MainWindow.xaml" />
+    <Page Include="UI\MyItemViewPage.xaml" />
     <Page Include="UI\Page1.xaml" />
     <Page Include="UI\Page2.xaml" />
     <Page Include="UI\SettingsPage.xaml" />
@@ -163,6 +168,10 @@
     </ClCompile>
     <ClCompile Include="UI\MainWindow.xaml.cpp">
       <DependentUpon>UI\MainWindow.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="UI\MyItem.cpp" />
+    <ClCompile Include="UI\MyItemViewPage.xaml.cpp">
+      <DependentUpon>UI\MyItemViewPage.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="UI\Page1.xaml.cpp">
       <DependentUpon>UI\Page1.xaml</DependentUpon>
