@@ -32,25 +32,26 @@ namespace winrt::MyApp::implementation
 
     void MyItemEditPage::OnNavigatedTo(NavigationEventArgs const& eventArgs)
     {
-        //auto item = eventArgs.Parameter().try_as<winrt::MyApp::MyItem>();
-
         auto param = eventArgs.Parameter().try_as<winrt::MyApp::NavigationParam>();
-        
         if (param)
         {
             _MainPage = param.MainPage();
-
-            auto item = param.Param0().try_as<winrt::MyApp::MyItem>();
-
-            if (item)
-            {
-                _Item = item;
-
-                TitleTextBox().Text(_Item.Title());
-                SubtitleTextBox().Text(_Item.Subtitle());
-                DescriptionTextBox().Text(_Item.Description());
-            }
         }
+        if (!_MainPage)
+        {
+            throw hresult_error(E_FAIL, L"MainPage is not available.");
+        }
+
+        
+        auto item = param.Param0().try_as<winrt::MyApp::MyItem>();
+        if (item)
+        {
+            _Item = item;
+            TitleTextBox().Text(_Item.Title());
+            SubtitleTextBox().Text(_Item.Subtitle());
+            DescriptionTextBox().Text(_Item.Description());
+        }
+
 
         OutputDebugStringW(L"MyItemEditPage.OnNavigatedTo\n");
     }
@@ -59,12 +60,14 @@ namespace winrt::MyApp::implementation
     {
         _MainPage.NotifyUser(L"확인", InfoBarSeverity::Informational);
 
+
         auto title = TitleTextBox().Text();
         auto subtitle = SubtitleTextBox().Text();
         auto description = DescriptionTextBox().Text();
 		_Item.Title(title);
 		_Item.Subtitle(subtitle);
 		_Item.Description(description);
+
 
        if (Frame().CanGoBack())
        {
@@ -75,6 +78,7 @@ namespace winrt::MyApp::implementation
     void MyItemEditPage::CancelButton_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
         _MainPage.NotifyUser(L"취소", InfoBarSeverity::Informational);
+
 
         if (Frame().CanGoBack())
         {

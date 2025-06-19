@@ -36,12 +36,12 @@ namespace winrt::MyApp::implementation
 
     void MyItemViewPage::OnNavigatedTo(NavigationEventArgs const& eventArgs)
     {
-        auto mainPage = eventArgs.Parameter().try_as<winrt::MyApp::MainPage>();
-        if (mainPage)
+        auto param = eventArgs.Parameter().try_as<winrt::MyApp::NavigationParam>();
+        if (param)
         {
-            _MainPage = mainPage;
+            _MainPage = param.MainPage();
         }
-        else
+        if (!_MainPage)
         {
             throw hresult_error(E_FAIL, L"MainPage is not available.");
         }
@@ -56,12 +56,9 @@ namespace winrt::MyApp::implementation
     {
         winrt::MyApp::MyItem persistedItem = eventArgs.ClickedItem().as<MyApp::MyItem>();
 
-        //Frame().Navigate(xaml_typename<winrt::MyApp::MyItemEditPage>(), eventArgs.ClickedItem()); // , m_suppress);
-
         auto param = winrt::make<winrt::MyApp::implementation::NavigationParam>();
-
         param.MainPage(_MainPage);
-        param.Param0(eventArgs.ClickedItem());
+        param.Param0(persistedItem);
 
         Frame().Navigate(xaml_typename<winrt::MyApp::MyItemEditPage>(), param);
     }
@@ -70,9 +67,9 @@ namespace winrt::MyApp::implementation
     {
 		OutputDebugStringW((L"Selected Item = " + std::to_wstring(ItemGridView().SelectedItems().Size()) + L"\n").c_str());
 
-        for (auto x : ItemGridView().SelectedItems())
+        for (auto item : ItemGridView().SelectedItems())
         {
-            winrt::MyApp::MyItem persistedItem = x.as<winrt::MyApp::MyItem>();
+            winrt::MyApp::MyItem persistedItem = item.as<winrt::MyApp::MyItem>();
             OutputDebugStringW((L"Selected Item: " + persistedItem.Title() + L"\n").c_str());
 		}
         OutputDebugStringW(L"\n");

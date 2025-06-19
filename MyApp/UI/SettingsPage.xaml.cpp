@@ -10,6 +10,8 @@
 
 #include "Configuration.h"
 
+#include "NavigationParam.h"
+
 namespace winrt
 {
     using namespace Microsoft::UI::Xaml;
@@ -27,15 +29,15 @@ namespace winrt::MyApp::implementation
 
     void SettingsPage::OnNavigatedTo(NavigationEventArgs const& eventArgs)
     {
-        auto mainPage = eventArgs.Parameter().try_as<winrt::MyApp::MainPage>();
-        if (mainPage)
+        auto param = eventArgs.Parameter().try_as<winrt::MyApp::NavigationParam>();
+        if (param)
         {
-            _MainPage = mainPage;
+            _MainPage = param.MainPage();
         }
-        else
+        if (!_MainPage)
         {
             throw hresult_error(E_FAIL, L"MainPage is not available.");
-		}
+        }
 
 
         for (UIElement&& c : themePanel().Children())
@@ -55,15 +57,11 @@ namespace winrt::MyApp::implementation
         auto selectedTheme = unbox_value<ElementTheme>(radioButton.Tag());
 
 
-        if (_MainPage)
+        auto content = _MainPage.Content().as<Grid>();
+        if (content != nullptr)
         {
-            auto content = _MainPage.Content().as<Grid>();
-
-            if (content != nullptr)
-            {
-                content.RequestedTheme(selectedTheme);
-                Config::CurrentTheme = content.RequestedTheme();
-            }
+            content.RequestedTheme(selectedTheme);
+            Config::CurrentTheme = content.RequestedTheme();
         }
     }
 }

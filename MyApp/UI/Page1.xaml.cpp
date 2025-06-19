@@ -8,6 +8,8 @@
 
 #endif
 
+#include "NavigationParam.h"
+
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
 using namespace Microsoft::UI::Xaml::Controls;
@@ -23,15 +25,15 @@ namespace winrt::MyApp::implementation
 
     void Page1::OnNavigatedTo(NavigationEventArgs const& eventArgs)
     {
-        auto mainPage = eventArgs.Parameter().try_as<winrt::MyApp::MainPage>();
-        if (mainPage)
+        auto param = eventArgs.Parameter().try_as<winrt::MyApp::NavigationParam>();
+        if (param)
         {
-            _MainPage = mainPage;
+            _MainPage = param.MainPage();
         }
-        else
+        if (!_MainPage)
         {
             throw hresult_error(E_FAIL, L"MainPage is not available.");
-        }
+		}
     }
 
     void Page1::SuccessMessage_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)

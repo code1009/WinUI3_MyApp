@@ -1,8 +1,8 @@
 ﻿namespace MyApp
 {
+    // https://github.com/microsoft/WindowsAppSDK-Samples/blob/main/Templates/VSIX/Project%20Templates/cpp-winui-template/MainPage.xaml.cpp
     // https://github.com/ComCatalin/BookstoreWinRT/blob/master/BookstoreUWP/BookstoreViewModel.cpp
     // https://github.com/OpenKneeboard/OpenKneeboard/tree/master/src/app/app-winui3
-    
     //-----------------------------------------------------------------------
     [default_interface]
     runtimeclass MyItem : Microsoft.UI.Xaml.Data.INotifyPropertyChanged

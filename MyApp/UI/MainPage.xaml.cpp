@@ -8,6 +8,8 @@
 
 #endif
 
+#include "NavigationParam.h"
+
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
 using namespace Microsoft::UI::Xaml::Controls;
@@ -131,9 +133,14 @@ namespace winrt::MyApp::implementation
         // Only navigate if the selected page isn't currently loaded.
         if (prePageType.Name != pageType.Name)
         {
+            auto param = winrt::make<winrt::MyApp::implementation::NavigationParam>();
+            param.MainPage(*this);
+            param.Param0(nullptr);
+
             DrillInNavigationTransitionInfo drillIn;
             //ContentFrame().Navigate(pageType, nullptr, drillIn);
-            ContentFrame().Navigate(pageType, *this, drillIn);
+            //ContentFrame().Navigate(pageType, *this, drillIn);
+            ContentFrame().Navigate(pageType, param, drillIn);
         }
     }
 
