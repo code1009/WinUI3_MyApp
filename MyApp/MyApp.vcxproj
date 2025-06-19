@@ -90,12 +90,13 @@
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
     <ClCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir);$(GeneratedFilesDir);$(GeneratedFilesDir)UI;$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
     <ClCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir);$(GeneratedFilesDir);$(GeneratedFilesDir)UI;$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -111,48 +112,52 @@
     <Manifest Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="App.xaml.h">
-      <DependentUpon>App.xaml</DependentUpon>
-    </ClInclude>
-    <ClInclude Include="Configuration.h" />
-    <ClInclude Include="MainPage.xaml.h">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </ClInclude>
-    <ClInclude Include="MainWindow.xaml.h">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-    </ClInclude>
     <ClInclude Include="pch.h" />
-    <ClInclude Include="SettingsPage.xaml.h">
-      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    <ClInclude Include="UI\App.xaml.h">
+      <DependentUpon>UI\App.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="UI\Configuration.h" />
+    <ClInclude Include="UI\MainPage.xaml.h">
+      <DependentUpon>UI\MainPage.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="UI\MainWindow.xaml.h">
+      <DependentUpon>UI\MainWindow.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="UI\pch.h" />
+    <ClInclude Include="UI\SettingsPage.xaml.h">
+      <DependentUpon>UI\SettingsPage.xaml</DependentUpon>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml" />
-    <Page Include="MainPage.xaml" />
-    <Page Include="MainWindow.xaml" />
-    <Page Include="SettingsPage.xaml" />
+    <ApplicationDefinition Include="UI\App.xaml">
+      <FileType>Document</FileType>
+    </ApplicationDefinition>
     <Page Include="Styles.xaml" />
+    <Page Include="UI\MainPage.xaml" />
+    <Page Include="UI\MainWindow.xaml" />
+    <Page Include="UI\SettingsPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="Project.idl" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
-    <ClCompile Include="App.xaml.cpp">
-      <DependentUpon>App.xaml</DependentUpon>
-    </ClCompile>
-    <ClCompile Include="Configuration.cpp" />
-    <ClCompile Include="MainPage.xaml.cpp">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </ClCompile>
-    <ClCompile Include="MainWindow.xaml.cpp">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-    </ClCompile>
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="SettingsPage.xaml.cpp">
-      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    <ClCompile Include="UI\App.xaml.cpp">
+      <DependentUpon>UI\App.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="UI\Configuration.cpp" />
+    <ClCompile Include="UI\MainPage.xaml.cpp">
+      <DependentUpon>UI\MainPage.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="UI\MainWindow.xaml.cpp">
+      <DependentUpon>UI\MainWindow.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="UI\SettingsPage.xaml.cpp">
+      <DependentUpon>UI\SettingsPage.xaml</DependentUpon>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

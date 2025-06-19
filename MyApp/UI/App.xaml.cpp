@@ -2,7 +2,7 @@
 
 #include "App.xaml.h"
 
-#include "MainWindow.xaml.h"
+#include "UI/MainWindow.xaml.h"
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
