@@ -8,12 +8,10 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <NavigationView 
-            x:Name="NavView"
+        <NavigationView x:Name="NavView" AlwaysShowHeader="False"
             Loaded="NavView_Loaded"
             ItemInvoked="NavView_ItemInvoked"
-            BackRequested="NavView_BackRequested"
-            AlwaysShowHeader="False"
+            BackRequested="NavView_BackRequested"            
             >
 
             <NavigationView.MenuItems>

@@ -1,6 +1,10 @@
 ﻿namespace MyApp
 {
+    // https://github.com/ComCatalin/BookstoreWinRT/blob/master/BookstoreUWP/BookstoreViewModel.cpp
+    // https://github.com/OpenKneeboard/OpenKneeboard/tree/master/src/app/app-winui3
+    
     //-----------------------------------------------------------------------
+    [default_interface]
     runtimeclass MyItem : Microsoft.UI.Xaml.Data.INotifyPropertyChanged
     {
         String Title;
@@ -11,12 +15,31 @@
         MyItem(String title, String subtitle, String description);
     }
 
-    runtimeclass MyItemViewPage : 
-        Microsoft.UI.Xaml.Controls.Page
+    //-----------------------------------------------------------------------
+    [default_interface]
+    runtimeclass MyViewModel
+    {
+        MyViewModel();
+
+        static MyViewModel Instance();
+
+		Windows.Foundation.Collections.IObservableVector<MyItem> Items{ get; };
+    }
+
+    //-----------------------------------------------------------------------
+    [default_interface]
+    runtimeclass MyItemViewPage : Microsoft.UI.Xaml.Controls.Page
     {
         MyItemViewPage();
 
-        Windows.Foundation.Collections.IObservableVector<MyItem> MyItems{ get; };
+        Windows.Foundation.Collections.IObservableVector<MyItem> Items{ get; };
+    }
+
+    //-----------------------------------------------------------------------
+    [default_interface]
+    runtimeclass MyItemEditPage : Microsoft.UI.Xaml.Controls.Page
+    {
+        MyItemEditPage();
     }
 
     //-----------------------------------------------------------------------

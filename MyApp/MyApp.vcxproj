@@ -124,9 +124,13 @@
       <DependentUpon>UI\MainWindow.xaml</DependentUpon>
     </ClInclude>
     <ClInclude Include="UI\MyItem.h" />
+    <ClInclude Include="UI\MyItemEditPage.xaml.h">
+      <DependentUpon>UI\MyItemEditPage.xaml</DependentUpon>
+    </ClInclude>
     <ClInclude Include="UI\MyItemViewPage.xaml.h">
       <DependentUpon>UI\MyItemViewPage.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="UI\MyViewModel.h" />
     <ClInclude Include="UI\Page1.xaml.h">
       <DependentUpon>UI\Page1.xaml</DependentUpon>
     </ClInclude>
@@ -145,6 +149,7 @@
     <Page Include="Styles.xaml" />
     <Page Include="UI\MainPage.xaml" />
     <Page Include="UI\MainWindow.xaml" />
+    <Page Include="UI\MyItemEditPage.xaml" />
     <Page Include="UI\MyItemViewPage.xaml" />
     <Page Include="UI\Page1.xaml" />
     <Page Include="UI\Page2.xaml" />
@@ -170,9 +175,13 @@
       <DependentUpon>UI\MainWindow.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="UI\MyItem.cpp" />
+    <ClCompile Include="UI\MyItemEditPage.xaml.cpp">
+      <DependentUpon>UI\MyItemEditPage.xaml</DependentUpon>
+    </ClCompile>
     <ClCompile Include="UI\MyItemViewPage.xaml.cpp">
       <DependentUpon>UI\MyItemViewPage.xaml</DependentUpon>
     </ClCompile>
+    <ClCompile Include="UI\MyViewModel.cpp" />
     <ClCompile Include="UI\Page1.xaml.cpp">
       <DependentUpon>UI\Page1.xaml</DependentUpon>
     </ClCompile>

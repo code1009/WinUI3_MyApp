@@ -27,9 +27,15 @@
                         <TextBlock Grid.Column="2" Text="Description" FontWeight="Bold" VerticalAlignment="Center" Padding="8,0"/>
                     </Grid>
 
-                    <GridView x:Name="MyGridView" ItemsSource="{x:Bind MyItems}" Margin="0,36,0,0"
-				  IsItemClickEnabled="True"
-				  >
+                    <GridView x:Name="ItemGridView" ItemsSource="{x:Bind Items}" Margin="0,36,0,0" 
+                        IsMultiSelectCheckBoxEnabled="True"
+                        SelectionMode="Multiple"
+                        SelectionChanged="ItemGridView_SelectionChanged"
+				        >
+<!--
+                        IsItemClickEnabled="True"
+                        ItemClick="ItemGridView_ItemClick"
+-->
                         <GridView.ItemTemplate>
                             <DataTemplate x:DataType="local:MyItem">
                                 <Grid>

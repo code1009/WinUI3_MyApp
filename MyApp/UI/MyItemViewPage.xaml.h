@@ -10,17 +10,19 @@ namespace winrt::MyApp::implementation
     private:
         winrt::MyApp::MainPage _MainPage{ nullptr };
 
-    private:
-        winrt::Windows::Foundation::Collections::IObservableVector<winrt::MyApp::MyItem> _MyItems;
-
     public:
         MyItemViewPage();
+        virtual ~MyItemViewPage();
 
     public:
         void OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e);
 
     public:
-        winrt::Windows::Foundation::Collections::IObservableVector<winrt::MyApp::MyItem> MyItems();
+        winrt::Windows::Foundation::Collections::IObservableVector<winrt::MyApp::MyItem> Items();
+
+    public:
+        void ItemGridView_ItemClick(Windows::Foundation::IInspectable const, Microsoft::UI::Xaml::Controls::ItemClickEventArgs const);
+        void ItemGridView_SelectionChanged(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::Controls::SelectionChangedEventArgs const& e);
     };
 }
 

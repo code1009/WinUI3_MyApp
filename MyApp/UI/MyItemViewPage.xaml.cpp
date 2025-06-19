@@ -10,6 +10,9 @@
 
 #endif
 
+#include "MyViewModel.h"
+#include "MyItemEditPage.xaml.h"
+
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
 using namespace Microsoft::UI::Xaml::Controls;
@@ -22,25 +25,12 @@ namespace winrt::MyApp::implementation
     {
         InitializeComponent();
 
-        _MyItems = winrt::single_threaded_observable_vector<MyApp::MyItem>();
+        OutputDebugStringW(L"MyItemViewPage\n");
+    }
 
-        MyApp::MyItem item1;
-        item1.Title(L"제목1");
-        item1.Subtitle(L"부제목1");
-        item1.Description(L"설명1");
-        _MyItems.Append(item1);
-
-        MyApp::MyItem item2;
-        item2.Title(L"제목2");
-        item2.Subtitle(L"부제목2");
-        item2.Description(L"설명2");
-        _MyItems.Append(item2);
-
-        MyApp::MyItem item3;
-        item3.Title(L"제목3");
-        item3.Subtitle(L"부제목3");
-        item3.Description(L"설명3");
-        _MyItems.Append(item3);
+    MyItemViewPage::~MyItemViewPage()
+    {
+        OutputDebugStringW(L"~MyItemViewPage\n");
     }
 
     void MyItemViewPage::OnNavigatedTo(NavigationEventArgs const& eventArgs)
@@ -56,8 +46,28 @@ namespace winrt::MyApp::implementation
         }
     }
 
-    winrt::Windows::Foundation::Collections::IObservableVector<winrt::MyApp::MyItem> MyItemViewPage::MyItems()
+    winrt::Windows::Foundation::Collections::IObservableVector<winrt::MyApp::MyItem> MyItemViewPage::Items()
     {
-        return _MyItems;
+		return MyViewModel::Instance().Items();
     }
+
+    void MyItemViewPage::ItemGridView_ItemClick(Windows::Foundation::IInspectable const, Microsoft::UI::Xaml::Controls::ItemClickEventArgs const e)
+    {
+        winrt::MyApp::MyItem persistedItem = e.ClickedItem().as<MyApp::MyItem>();
+
+        Frame().Navigate(xaml_typename<winrt::MyApp::MyItemEditPage>(), e.ClickedItem()); // , m_suppress);
+    }
+
+    void MyItemViewPage::ItemGridView_SelectionChanged(winrt::Windows::Foundation::IInspectable const& /*sender*/, winrt::Microsoft::UI::Xaml::Controls::SelectionChangedEventArgs const& e)
+    {
+		//winrt::MyApp::MyItem persistedItem = e.OriginalSource().as<winrt::Microsoft::UI::Xaml::Controls::GridView>().SelectedItem().as < MyApp::MyItem
+        
+        for (auto x : ItemGridView().SelectedItems())
+        {
+            winrt::MyApp::MyItem persistedItem = x.as<winrt::MyApp::MyItem>();
+            OutputDebugStringW((L"Selected Item: " + persistedItem.Title() + L"\n").c_str());
+		}
+        OutputDebugStringW(L"\n");
+    }
+
 }
