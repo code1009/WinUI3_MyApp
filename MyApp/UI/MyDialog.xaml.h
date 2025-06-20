@@ -1,31 +1,31 @@
 ﻿#pragma once
 
-#include "Page1.g.h"
+#include "MyDialog.g.h"
 
 namespace winrt::MyApp::implementation
 {
-    struct Page1 : Page1T<Page1>
+    struct MyDialog : MyDialogT<MyDialog>
     {
     private:
-        winrt::MyApp::MainPage _MainPage{ nullptr };
+		hstring _Input;
 
     public:
-        Page1();
+        MyDialog();
+        virtual ~MyDialog();
 
     public:
-        void OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& eventArgs);
+        hstring Input();
+		void Input(hstring const& value);
 
     public:
-        void SuccessMessage_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& eventArgs);
-        void ErrorMessage_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& eventArgs);
-        void InformationalMessage_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& eventArgs);
-        void ClearMessage_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& eventArgs);
+        void MyDialog_PrimaryButtonClick(winrt::Microsoft::UI::Xaml::Controls::ContentDialog const& sender, winrt::Microsoft::UI::Xaml::Controls::ContentDialogButtonClickEventArgs const& eventArgs);
+        void MyDialog_CloseButtonClick(winrt::Microsoft::UI::Xaml::Controls::ContentDialog const& sender, winrt::Microsoft::UI::Xaml::Controls::ContentDialogButtonClickEventArgs const& eventArgs);
     };
 }
 
 namespace winrt::MyApp::factory_implementation
 {
-    struct Page1 : Page1T<Page1, implementation::Page1>
+    struct MyDialog : MyDialogT<MyDialog, implementation::MyDialog>
     {
     };
 }

@@ -1,14 +1,12 @@
 ﻿#include "pch.h"
 
-#include "Page1.xaml.h"
+#include "MyDialog.xaml.h"
 
-#if __has_include("Page1.g.cpp")
+#if __has_include("MyDialog.g.cpp")
 
-#include "Page1.g.cpp"
+#include "MyDialog.g.cpp"
 
 #endif
-
-#include "NavigationParam.h"
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
@@ -18,41 +16,45 @@ using namespace Windows::Foundation;
 
 namespace winrt::MyApp::implementation
 {
-    Page1::Page1()
+    MyDialog::MyDialog()
     {
         InitializeComponent();
+
+		OutputDebugStringW(L"MyDialog\n");
+
+		Input(L"MyDialog");
     }
 
-    void Page1::OnNavigatedTo(NavigationEventArgs const& eventArgs)
+    MyDialog::~MyDialog()
     {
-        auto param = eventArgs.Parameter().try_as<winrt::MyApp::NavigationParam>();
-        if (param)
-        {
-            _MainPage = param.MainPage();
-        }
-        if (!_MainPage)
-        {
-            throw hresult_error(E_FAIL, L"MainPage is not available.");
-		}
+        OutputDebugStringW(L"~MyDialog\n");
     }
 
-    void Page1::SuccessMessage_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
+    hstring MyDialog::Input()
     {
-        _MainPage.NotifyUser(L"Everything was ok!", InfoBarSeverity::Success);
+        return _Input;
+	}
+
+    void MyDialog::Input(hstring const& value)
+    {
+		_Input = value;
     }
 
-    void Page1::ErrorMessage_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
+    void MyDialog::MyDialog_PrimaryButtonClick(ContentDialog const& /*sender*/, ContentDialogButtonClickEventArgs const& /*eventArgs*/)
     {
-        _MainPage.NotifyUser(L"Something went wrong.", InfoBarSeverity::Error);
+        std::wstring message;
+        std::wstring input;
+        input = InputTextBox().Text();
+        message = L"PrimaryButton Clicked: " + input;
+		Input(message.c_str());
     }
 
-    void Page1::InformationalMessage_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
+    void MyDialog::MyDialog_CloseButtonClick(ContentDialog const& /*sender*/, ContentDialogButtonClickEventArgs const& /*eventArgs*/)
     {
-        _MainPage.NotifyUser(L"This is the informational bar.", InfoBarSeverity::Informational);
-    }
-
-    void Page1::ClearMessage_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
-    {
-        _MainPage.NotifyUser(L"", InfoBarSeverity::Informational);
+        std::wstring message;
+        std::wstring input;
+        input = InputTextBox().Text();
+        message = L"CloseButton Clicked: " + input;
+        Input(message.c_str());
     }
 }

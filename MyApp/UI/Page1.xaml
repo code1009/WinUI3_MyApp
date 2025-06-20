@@ -18,6 +18,8 @@
                 <Button Content="Show Error Message" Click="ErrorMessage_Click" />
                 <Button Content="Show Info Message" Click="InformationalMessage_Click" />
                 <Button Content="Clear Messages" Click="ClearMessage_Click" />
+
+                <Button Content="Dialog" Click="DialogButton_Click" />
             </StackPanel>
         </ScrollViewer>
     </Grid>

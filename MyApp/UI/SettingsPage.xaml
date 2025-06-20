@@ -10,24 +10,24 @@
     <Grid RowDefinitions="*,Auto">
         <ScrollViewer>
             <StackPanel Spacing="10" Margin="10,10,10,10" >
-                <TextBlock Text="Theme Mode" />
+                <TextBlock Text="앱 테마" />
                 <StackPanel x:Name="ThemePanel">
                     <RadioButton Checked="OnThemeRadioButtonChecked" 
-                                 Content="Light"
+                                 Content="밝은 앱 테마 사용"
                                  >
                         <RadioButton.Tag>
                             <ElementTheme>Light</ElementTheme>
                         </RadioButton.Tag>
                     </RadioButton>
                     <RadioButton Checked="OnThemeRadioButtonChecked" 
-                                 Content="Dark"
+                                 Content="어두운 앱 테마 사용"
                                  >
                         <RadioButton.Tag>
                             <ElementTheme>Dark</ElementTheme>
                         </RadioButton.Tag>
                     </RadioButton>
                     <RadioButton Checked="OnThemeRadioButtonChecked" 
-                                 Content="System Default"
+                                 Content="시스템 설정 사용"
                                  >
                         <RadioButton.Tag>
                             <ElementTheme>Default</ElementTheme>

@@ -1,8 +1,10 @@
 ﻿namespace MyApp
 {
-    [default_interface]
-    runtimeclass Page1 : Microsoft.UI.Xaml.Controls.Page
+    [default_interface] 
+    runtimeclass MyDialog : Microsoft.UI.Xaml.Controls.ContentDialog
     {
-        Page1();
+        String Input;
+
+        MyDialog();
     }
 }
