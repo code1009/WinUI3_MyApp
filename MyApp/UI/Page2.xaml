@@ -8,7 +8,7 @@
     mc:Ignorable="d">
 
     <Grid>
-        <ScrollViewer Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer>
             <StackPanel Spacing="10" Margin="5,5,5,5">
                 <TextBlock Text="Description:" Style="{StaticResource SampleHeaderTextStyle}"/>
                 <TextBlock Style="{StaticResource ScenarioDescriptionTextStyle}" TextWrapping="Wrap">

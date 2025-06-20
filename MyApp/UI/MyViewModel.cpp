@@ -38,19 +38,15 @@ namespace winrt::MyApp::implementation
         _Items = winrt::single_threaded_observable_vector<MyApp::MyItem>();
 
 
-        winrt::MyApp::MyItem _Item{ nullptr };
-
-        _Item = winrt::make<winrt::MyApp::implementation::MyItem>();
-        _Item.Title(L"제목10");
-        _Item.Subtitle(L"부제목10");
-        _Item.Description(L"설명10");
-        _Items.Append(_Item);
-
-        _Item = winrt::make<winrt::MyApp::implementation::MyItem>();
-        _Item.Title(L"제목20");
-        _Item.Subtitle(L"부제목20");
-        _Item.Description(L"설명20");
-        _Items.Append(_Item);
+        winrt::MyApp::MyItem item;
+        for(std::size_t i = 0; i < 10; i++)
+        {
+            item = winrt::make<winrt::MyApp::implementation::MyItem>();
+            item.Title(L"제목" + std::to_wstring(i + 1));
+            item.Subtitle(L"부제목" + std::to_wstring(i + 1));
+            item.Description(L"설명" + std::to_wstring(i + 1));
+            _Items.Append(item);
+		}
     }
 
     MyViewModel::~MyViewModel()

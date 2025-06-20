@@ -7,8 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid RowDefinitions="*,Auto">
-        <ScrollViewer >
+    <Grid RowDefinitions="*,Auto" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer>
             <StackPanel Spacing="10" Margin="10,10,10,10">
                 <TextBlock Text="Description:" Style="{StaticResource SampleHeaderTextStyle}"/>
                 <TextBlock Style="{StaticResource ScenarioDescriptionTextStyle}" TextWrapping="Wrap">

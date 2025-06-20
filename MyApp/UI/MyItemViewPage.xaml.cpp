@@ -75,4 +75,22 @@ namespace winrt::MyApp::implementation
         OutputDebugStringW(L"\n");
     }
 
+    void MyItemViewPage::AddButton_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
+    {
+
+    }
+
+    void MyItemViewPage::EditButton_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
+    {
+
+    }
+
+    void MyItemViewPage::DeleteButton_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
+    {
+
+    }
+    void MyItemViewPage::FindButton_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
+    {
+
+    }
 }

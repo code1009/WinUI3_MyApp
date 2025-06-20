@@ -8,7 +8,7 @@
     mc:Ignorable="d">
 
     <Grid>
-        <ScrollViewer Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer>
             <StackPanel Spacing="10" Margin="5,5,5,5">
                 <Grid Padding="24">
                     <Grid.ColumnDefinitions>
@@ -24,17 +24,27 @@
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Title:" VerticalAlignment="Center" Margin="0,0,8,8"/>
-                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="TitleTextBox" Margin="0,0,0,8"/>
+                    <TextBox x:Name="TitleTextBox" 
+                             Grid.Row="0" Grid.Column="1" Margin="0,0,0,8"
+                             />
 
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Subtitle:" VerticalAlignment="Center" Margin="0,0,8,8"/>
-                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="SubtitleTextBox" Margin="0,0,0,8"/>
+                    <TextBox x:Name="SubtitleTextBox" 
+                             Grid.Row="1" Grid.Column="1" Margin="0,0,0,8"
+                             />
 
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="Description:" VerticalAlignment="Center" Margin="0,0,8,8"/>
-                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="DescriptionTextBox" Margin="0,0,0,8"/>
+                    <TextBox x:Name="DescriptionTextBox" 
+                             Grid.Row="2" Grid.Column="1" Margin="0,0,0,8"
+                             />
 
                     <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8">
-                        <Button Content="확인" x:Name="OkButton" Width="80" Margin="0,8,0,0" Click="OkButton_Click" />
-                        <Button Content="취소" x:Name="CancelButton" Width="80" Margin="0,8,0,0" Click="CancelButton_Click" />
+                        <Button x:Name="OkButton" Click="OkButton_Click" 
+                                Content="확인" Width="80" Margin="0,8,0,0" 
+                                />
+                        <Button x:Name="CancelButton" Click="CancelButton_Click" 
+                                Content="취소" Width="80" Margin="0,8,0,0" 
+                                />
                     </StackPanel>
                 </Grid>
             </StackPanel>

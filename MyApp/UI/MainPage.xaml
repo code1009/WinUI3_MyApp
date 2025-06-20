@@ -8,21 +8,26 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <NavigationView x:Name="NavView" AlwaysShowHeader="False"
-            Loaded="NavView_Loaded"
-            ItemInvoked="NavView_ItemInvoked"
-            BackRequested="NavView_BackRequested"            
-            >
+        <NavigationView x:Name="NavView" 
+                        Loaded="NavView_Loaded"
+                        ItemInvoked="NavView_ItemInvoked"
+                        BackRequested="NavView_BackRequested"            
+                        AlwaysShowHeader="False"
+                        >
 
             <NavigationView.MenuItems>
-                <NavigationViewItemHeader x:Name="MainPagesHeader" Content="항목"/>
+                <NavigationViewItemHeader x:Name="MainPagesHeader" 
+                                          Content="항목"
+                                          />
             </NavigationView.MenuItems>
 
             <Grid RowDefinitions="*,Auto">
-                <ScrollViewer>
-                    <Frame Padding="0" x:Name="ContentFrame" Navigated="ContentFrame_Navigated" />
-                </ScrollViewer>
-                <InfoBar x:Name="infoBar" Grid.Row="1" />
+                <Frame x:Name="ContentFrame" Navigated="ContentFrame_Navigated" 
+                       Padding="0" 
+                       />
+                <InfoBar x:Name="infoBar" 
+                         Grid.Row="1" 
+                         />
             </Grid>
         </NavigationView>
     </Grid>

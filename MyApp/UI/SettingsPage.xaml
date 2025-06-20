@@ -8,21 +8,27 @@
     mc:Ignorable="d">
 
     <Grid RowDefinitions="*,Auto">
-        <ScrollViewer Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer>
             <StackPanel Spacing="10" Margin="10,10,10,10" >
                 <TextBlock Text="Theme Mode" />
                 <StackPanel x:Name="themePanel">
-                    <RadioButton Checked="OnThemeRadioButtonChecked" Content="Light">
+                    <RadioButton Checked="OnThemeRadioButtonChecked" 
+                                 Content="Light"
+                                 >
                         <RadioButton.Tag>
                             <ElementTheme>Light</ElementTheme>
                         </RadioButton.Tag>
                     </RadioButton>
-                    <RadioButton Checked="OnThemeRadioButtonChecked" Content="Dark">
+                    <RadioButton Checked="OnThemeRadioButtonChecked" 
+                                 Content="Dark"
+                                 >
                         <RadioButton.Tag>
                             <ElementTheme>Dark</ElementTheme>
                         </RadioButton.Tag>
                     </RadioButton>
-                    <RadioButton Checked="OnThemeRadioButtonChecked" Content="System Default">
+                    <RadioButton Checked="OnThemeRadioButtonChecked" 
+                                 Content="System Default"
+                                 >
                         <RadioButton.Tag>
                             <ElementTheme>Default</ElementTheme>
                         </RadioButton.Tag>
