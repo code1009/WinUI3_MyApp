@@ -123,6 +123,9 @@
     <ClInclude Include="UI\MainWindow.xaml.h">
       <DependentUpon>UI\MainWindow.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="UI\MyDialog.xaml.h">
+      <DependentUpon>UI\MyDialog.xaml</DependentUpon>
+    </ClInclude>
     <ClInclude Include="UI\MyItem.h" />
     <ClInclude Include="UI\MyItemEditPage.xaml.h">
       <DependentUpon>UI\MyItemEditPage.xaml</DependentUpon>
@@ -150,6 +153,7 @@
     <Page Include="Styles.xaml" />
     <Page Include="UI\MainPage.xaml" />
     <Page Include="UI\MainWindow.xaml" />
+    <Page Include="UI\MyDialog.xaml" />
     <Page Include="UI\MyItemEditPage.xaml" />
     <Page Include="UI\MyItemViewPage.xaml" />
     <Page Include="UI\Page1.xaml" />
@@ -157,11 +161,17 @@
     <Page Include="UI\SettingsPage.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <Midl Include="UI\MainPage.idl">
-      <DependentUpon>UI\MainPage.xaml</DependentUpon>
+    <Midl Include="UI\MyItem.idl">
       <SubType>Code</SubType>
     </Midl>
-    <Midl Include="UI\MyItem.idl">
+    <Midl Include="UI\MyViewModel.idl">
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="UI\NavigationParam.idl">
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="UI\MainPage.idl">
+      <DependentUpon>UI\MainPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
     <Midl Include="UI\MyItemEditPage.idl">
@@ -172,10 +182,6 @@
       <DependentUpon>UI\MyItemViewPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
-    <Midl Include="UI\MyViewModel.idl">
-      <SubType>Code</SubType>
-    </Midl>
-    <Midl Include="UI\NavigationParam.idl" />
     <Midl Include="UI\Page1.idl">
       <DependentUpon>UI\Page1.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -184,12 +190,16 @@
       <DependentUpon>UI\Page2.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
-    <Midl Include="UI\MainWindow.idl">
-      <DependentUpon>UI\MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Midl>
     <Midl Include="UI\SettingsPage.idl">
       <DependentUpon>UI\SettingsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="UI\MyDialog.idl">
+      <DependentUpon>UI\MyDialog.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="UI\MainWindow.idl">
+      <DependentUpon>UI\MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
   </ItemGroup>
@@ -208,6 +218,9 @@
     </ClCompile>
     <ClCompile Include="UI\MainWindow.xaml.cpp">
       <DependentUpon>UI\MainWindow.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="UI\MyDialog.xaml.cpp">
+      <DependentUpon>UI\MyDialog.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="UI\MyItem.cpp" />
     <ClCompile Include="UI\MyItemEditPage.xaml.cpp">
