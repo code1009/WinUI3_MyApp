@@ -5,11 +5,11 @@ namespace MyApp
     [default_interface]
     runtimeclass MyViewModel
     {
-        MyViewModel();
-
         static MyViewModel Instance();
 
-		Windows.Foundation.Collections.IObservableVector<MyItem> Items{ get; };
+        MyViewModel();
+
         UInt64 MainWindowHandle;
+        Windows.Foundation.Collections.IObservableVector<MyItem> Items{ get; };
     }
 }
