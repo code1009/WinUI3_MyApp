@@ -27,7 +27,7 @@ namespace winrt::MyApp::implementation
 
         HWND hwnd = GetWindowHandle();
         LoadIcon(hwnd, L"Assets/windows-sdk.ico");
-        SetWindowSize(hwnd, 1050, 800);
+        SetWindowSize(hwnd, 1920/2, 1080/2);
         PlacementCenterWindowInMonitorWin32(hwnd);
 
 		MyViewModel::Instance(); // Initialize the ViewModel to populate items
