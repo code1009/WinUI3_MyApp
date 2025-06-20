@@ -39,7 +39,7 @@ namespace winrt::MyApp::implementation
 
 
         winrt::MyApp::MyItem item;
-        for(std::size_t i = 0; i < 100; i++)
+        for(std::size_t i = 0; i < 1000; i++)
         {
             item = winrt::make<winrt::MyApp::implementation::MyItem>();
             item.Title(L"제목" + std::to_wstring(i + 1));
