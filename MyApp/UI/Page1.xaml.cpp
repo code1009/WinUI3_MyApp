@@ -16,8 +16,9 @@
 //#include <ShObjidl_core.h>
 
 #include <winrt/Windows.Storage.Pickers.h>
+
 //#include <windows.ui.xaml.hosting.desktopwindowxamlsource.h> // For IWindowNative
-#include "microsoft.ui.xaml.window.h" 
+//#include "microsoft.ui.xaml.window.h" 
 
 #include "Page1.xaml.h"
 
@@ -121,34 +122,6 @@ namespace winrt::MyApp::implementation
         */
     }
 
-#if 0
-    // IWindowNative 인터페이스 정의 (WinUI 3 Desktop)
-    struct __declspec(uuid("6d5140c1-7436-11ce-8034-00aa006009fa")) IWindowNative : ::IUnknown
-    {
-        virtual HRESULT __stdcall get_WindowHandle(HWND* hwnd) = 0;
-    };
-#endif
-
-    // Page 또는 MainPage에서 HWND 얻기
-    HWND GetWindowHandleFromXamlRoot(Microsoft::UI::Xaml::XamlRoot const& xamlRoot)
-    {
-        auto window = xamlRoot.Content().XamlRoot().Content().as<winrt::Microsoft::UI::Xaml::Window>();
-        auto windowNative = window.as<IWindowNative>();
-        HWND hwnd = nullptr;
-        windowNative->get_WindowHandle(&hwnd);
-        return hwnd;
-    }
-
-    // 또는 Window::Current() 사용
-    HWND GetWindowHandleFromWindow()
-    {
-        auto window = winrt::Microsoft::UI::Xaml::Window::Current();
-        auto windowNative = window.as<IWindowNative>();
-        HWND hwnd = nullptr;
-        windowNative->get_WindowHandle(&hwnd);
-        return hwnd;
-    }
-
     winrt::Windows::Foundation::IAsyncAction Page1::ContentDialog_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
         ContentDialog dialog;
@@ -170,6 +143,76 @@ namespace winrt::MyApp::implementation
 
     // https://github.com/microsoft/FFmpegInterop/blob/main/Samples/MediaPlayerCPP/MainPage.cpp
     // https://github.com/MarkIngramUK/XamlIslands/blob/9a260595c5a9736a825672e9f2e89f1b5d87fae0/Common/Sample.hpp
+
+#if 0
+    // IWindowNative 인터페이스 정의 (WinUI 3 Desktop)
+    struct __declspec(uuid("6d5140c1-7436-11ce-8034-00aa006009fa")) IWindowNative : ::IUnknown
+    {
+        virtual HRESULT __stdcall get_WindowHandle(HWND* hwnd) = 0;
+    };
+#endif
+
+#if 0
+    // Page 또는 MainPage에서 HWND 얻기
+    HWND GetWindowHandleFromXamlRoot(Microsoft::UI::Xaml::XamlRoot const& xamlRoot)
+    {
+        auto window = xamlRoot.Content().XamlRoot().Content().as<winrt::Microsoft::UI::Xaml::Window>();
+        auto windowNative = window.as<IWindowNative>();
+        HWND hwnd = nullptr;
+        windowNative->get_WindowHandle(&hwnd);
+        return hwnd;
+    }
+
+    // 또는 Window::Current() 사용
+    HWND GetWindowHandleFromWindow()
+    {
+        auto window = winrt::Microsoft::UI::Xaml::Window::Current();
+        auto windowNative = window.as<IWindowNative>();
+        HWND hwnd = nullptr;
+        windowNative->get_WindowHandle(&hwnd);
+        return hwnd;
+    }
+#endif
+
+#if 0
+
+// pch 확인
+#define NOMINMAX
+#define WIN32_LEAN_AND_MEAN
+#include <Windows.h>
+
+#include <shobjidl.h> // For FileOpenPicker, FileSavePicker, FolderPicker
+#include <Unknwn.h>
+
+// Undefine GetCurrentTime macro to prevent
+// conflict with Storyboard::GetCurrentTime
+#undef GetCurrentTime
+
+#include <restrictederrorinfo.h>
+#include <hstring.h>
+
+#include <winrt/Windows.Foundation.h>
+#include <winrt/Windows.Foundation.Collections.h>
+#include <winrt/Windows.ApplicationModel.Activation.h>
+#include <winrt/Windows.UI.Xaml.Interop.h> //For using xaml_typename
+
+#include <winrt/Microsoft.UI.Composition.h>
+#include <winrt/Microsoft.UI.Xaml.h>
+#include <winrt/Microsoft.UI.Xaml.Controls.h>
+#include <winrt/Microsoft.UI.Xaml.Media.Animation.h>
+#include <winrt/Microsoft.UI.Xaml.Controls.Primitives.h>
+#include <winrt/Microsoft.UI.Xaml.Data.h>
+#include <winrt/Microsoft.UI.Xaml.Interop.h>
+#include <winrt/Microsoft.UI.Xaml.Markup.h>
+#include <winrt/Microsoft.UI.Xaml.Media.h>
+#include <winrt/Microsoft.UI.Xaml.Navigation.h>
+#include <winrt/Microsoft.UI.Xaml.Shapes.h>
+#include <winrt/Microsoft.UI.Dispatching.h>
+#include <winrt/Windows.UI.Core.h>
+
+#endif
+
+
     winrt::Windows::Foundation::IAsyncAction Page1::FileOpenPicker_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
         HWND hwnd = nullptr;
