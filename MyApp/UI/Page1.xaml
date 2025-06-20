@@ -19,7 +19,11 @@
                 <Button Content="Show Info Message" Click="InformationalMessage_Click" />
                 <Button Content="Clear Messages" Click="ClearMessage_Click" />
 
-                <Button Content="Dialog" Click="DialogButton_Click" />
+                <Button Content="CustomDialog" Click="CustomDialog_Click" />
+                <Button Content="ContentDialog" Click="ContentDialog_Click" />
+                <Button Content="FileOpenPicker" Click="FileOpenPicker_Click" />
+                <Button Content="FileSavePicker" Click="FileSavePicker_Click" />
+                <Button Content="FolderPicker" Click="FolderPicker_Click" />
             </StackPanel>
         </ScrollViewer>
     </Grid>

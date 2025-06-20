@@ -10,5 +10,6 @@ namespace MyApp
         static MyViewModel Instance();
 
 		Windows.Foundation.Collections.IObservableVector<MyItem> Items{ get; };
+        UInt64 MainWindowHandle;
     }
 }

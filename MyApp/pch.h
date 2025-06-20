@@ -1,12 +1,18 @@
 ﻿#pragma once
-#include <windows.h>
-#include <unknwn.h>
-#include <restrictederrorinfo.h>
-#include <hstring.h>
+
+#define NOMINMAX
+#define WIN32_LEAN_AND_MEAN
+#include <Windows.h>
+
+#include <shobjidl.h>
+#include <Unknwn.h>
 
 // Undefine GetCurrentTime macro to prevent
 // conflict with Storyboard::GetCurrentTime
 #undef GetCurrentTime
+
+#include <restrictederrorinfo.h>
+#include <hstring.h>
 
 #include <winrt/Windows.Foundation.h>
 #include <winrt/Windows.Foundation.Collections.h>

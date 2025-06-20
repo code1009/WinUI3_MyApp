@@ -21,7 +21,11 @@ namespace winrt::MyApp::implementation
         void InformationalMessage_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& eventArgs);
         void ClearMessage_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& eventArgs);
 
-        winrt::Windows::Foundation::IAsyncAction DialogButton_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& eventArgs);
+        winrt::Windows::Foundation::IAsyncAction CustomDialog_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& eventArgs);
+        winrt::Windows::Foundation::IAsyncAction ContentDialog_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& eventArgs);
+        winrt::Windows::Foundation::IAsyncAction FileOpenPicker_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& eventArgs);
+        winrt::Windows::Foundation::IAsyncAction FileSavePicker_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& eventArgs);
+        winrt::Windows::Foundation::IAsyncAction FolderPicker_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& eventArgs);
     };
 }
 
