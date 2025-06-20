@@ -6,6 +6,7 @@ namespace MyApp
     runtimeclass NavigationParam
     {
         MainPage MainPage;
+        String Command;
         IInspectable Param0;
 
         NavigationParam();

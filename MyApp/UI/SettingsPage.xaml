@@ -11,7 +11,7 @@
         <ScrollViewer>
             <StackPanel Spacing="10" Margin="10,10,10,10" >
                 <TextBlock Text="Theme Mode" />
-                <StackPanel x:Name="themePanel">
+                <StackPanel x:Name="ThemePanel">
                     <RadioButton Checked="OnThemeRadioButtonChecked" 
                                  Content="Light"
                                  >

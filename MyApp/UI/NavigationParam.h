@@ -26,6 +26,7 @@ namespace winrt::MyApp::implementation
     {
     private:
         winrt::MyApp::MainPage _MainPage{ nullptr };
+		hstring _Command;
         IInspectable _Param0;
 
     public:
@@ -34,6 +35,8 @@ namespace winrt::MyApp::implementation
     public:
         winrt::MyApp::MainPage MainPage();
         void MainPage(winrt::MyApp::MainPage const& value);
+        hstring Command();
+        void Command(hstring const& value);
         winrt::Windows::Foundation::IInspectable Param0();
         void Param0(winrt::Windows::Foundation::IInspectable const& value);
     };

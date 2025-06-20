@@ -33,6 +33,16 @@ namespace winrt::MyApp::implementation
         _MainPage = value;
     }
 
+    hstring NavigationParam::Command()
+    {
+		return _Command;
+    }
+    
+    void NavigationParam::Command(hstring const& value)
+    {
+		_Command = value;
+    }
+
     winrt::Windows::Foundation::IInspectable NavigationParam::Param0()
     {
         return _Param0;

@@ -40,7 +40,7 @@ namespace winrt::MyApp::implementation
         }
 
 
-        for (UIElement&& c : themePanel().Children())
+        for (UIElement&& c : ThemePanel().Children())
         {
             auto tag = c.as<RadioButton>().Tag().as<ElementTheme>();
             if (tag == Config::CurrentTheme)

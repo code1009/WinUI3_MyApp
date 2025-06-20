@@ -63,9 +63,9 @@ namespace winrt::MyApp::implementation
 
     void MainPage::UpdateStatus(hstring const& strMessage, InfoBarSeverity severity)
     {
-        infoBar().Message(strMessage);
-        infoBar().IsOpen(!strMessage.empty());
-        infoBar().Severity(severity);
+        InfoBar().Message(strMessage);
+        InfoBar().IsOpen(!strMessage.empty());
+        InfoBar().Severity(severity);
     }
 
     void MainPage::NavView_Loaded(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
@@ -135,7 +135,6 @@ namespace winrt::MyApp::implementation
         {
             auto param = winrt::make<winrt::MyApp::implementation::NavigationParam>();
             param.MainPage(*this);
-            param.Param0(nullptr);
 
             DrillInNavigationTransitionInfo drillIn;
             //ContentFrame().Navigate(pageType, nullptr, drillIn);

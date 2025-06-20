@@ -25,7 +25,7 @@
                 <Frame x:Name="ContentFrame" Navigated="ContentFrame_Navigated" 
                        Padding="0" 
                        />
-                <InfoBar x:Name="infoBar" 
+                <InfoBar x:Name="InfoBar" 
                          Grid.Row="1" 
                          />
             </Grid>

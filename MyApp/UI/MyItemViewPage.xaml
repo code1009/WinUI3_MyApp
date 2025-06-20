@@ -11,16 +11,11 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="4" Margin="8,8,8,0" HorizontalAlignment="Stretch">
-            <Button Click="UnselectAllButton_Click">
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                    <SymbolIcon Symbol="ClearSelection"/>
-                    <TextBlock Text="전체 선택 해제" Margin="4,0,0,0" VerticalAlignment="Center"/>
-                </StackPanel>
-            </Button>
             <Button Click="AddButton_Click">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <SymbolIcon Symbol="Add"/>
@@ -44,8 +39,19 @@
                     <SymbolIcon Symbol="Clear"/>
                     <TextBlock Text="전체 삭제" Margin="4,0,0,0" VerticalAlignment="Center"/>
                 </StackPanel>
-            </Button>            
-            <TextBox x:Name="FindTextBox" Width="320" PlaceholderText="검색어 입력" Margin="16,0,0,0"/>
+            </Button>
+            <Button Click="UnselectAllButton_Click">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <SymbolIcon Symbol="ClearSelection"/>
+                    <TextBlock Text="전체 선택 해제" Margin="4,0,0,0" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="4" Margin="8,8,8,0" HorizontalAlignment="Stretch">
+            <TextBlock x:Name="ItemCountTextBlock"
+                       Margin="4,0,0,0" VerticalAlignment="Center"/>
+            <TextBox x:Name="FindTextBox" Width="320" PlaceholderText="검색 제목 입력" Margin="16,0,0,0"/>
             <Button Click="FindButton_Click">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <SymbolIcon Symbol="Find"/>
@@ -54,29 +60,10 @@
             </Button>
         </StackPanel>
 
-        <ScrollViewer Grid.Row="1" Margin="0,8,0,0">
+        <ScrollViewer Grid.Row="2" Margin="0,8,0,0">
             
             <StackPanel Spacing="10" Margin="5,5,5,5">
                 <Grid>
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <Grid Grid.Row="0" Margin="0,0,0,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="200"/>
-                            <ColumnDefinition Width="200"/>
-                            <ColumnDefinition Width="400"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="36" />
-                        </Grid.RowDefinitions>
-                        <TextBlock Grid.Column="0" Text="제목" FontWeight="Bold" VerticalAlignment="Center" Padding="8,0"/>
-                        <TextBlock Grid.Column="1" Text="부제목" FontWeight="Bold" VerticalAlignment="Center" Padding="8,0"/>
-                        <TextBlock Grid.Column="2" Text="설명" FontWeight="Bold" VerticalAlignment="Center" Padding="8,0"/>
-                    </Grid>
 
                     <GridView x:Name="ItemGridView" ItemsSource="{x:Bind Items}"
                         Grid.Row="1" Margin="0,0,0,0"
@@ -88,6 +75,24 @@
                         IsItemClickEnabled="True"
                         ItemClick="ItemGridView_ItemClick"
 -->
+                        <GridView.HeaderTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="200"/>
+                                        <ColumnDefinition Width="200"/>
+                                        <ColumnDefinition Width="400"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="36" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Column="0" Text="제목" FontWeight="Bold" VerticalAlignment="Center" Padding="8,0"/>
+                                    <TextBlock Grid.Column="1" Text="부제목" FontWeight="Bold" VerticalAlignment="Center" Padding="8,0"/>
+                                    <TextBlock Grid.Column="2" Text="설명" FontWeight="Bold" VerticalAlignment="Center" Padding="8,0"/>
+                                </Grid>
+                            </DataTemplate>
+                        </GridView.HeaderTemplate>
+                        
                         <GridView.ItemTemplate>
                             <DataTemplate x:DataType="local:MyItem">
                                 <Grid>
@@ -108,9 +113,10 @@
 
                         <GridView.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <ItemsWrapGrid MaximumRowsOrColumns="1" Orientation="Horizontal"/>
+                                <ItemsWrapGrid MaximumRowsOrColumns="1" Orientation="Horizontal" />
                             </ItemsPanelTemplate>
                         </GridView.ItemsPanel>
+                        
                     </GridView>
 
                 </Grid>
