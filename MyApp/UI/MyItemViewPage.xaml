@@ -14,7 +14,13 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="2" Margin="8,8,8,0" HorizontalAlignment="Stretch">
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="4" Margin="8,8,8,0" HorizontalAlignment="Stretch">
+            <Button Click="UnselectAllButton_Click">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <SymbolIcon Symbol="ClearSelection"/>
+                    <TextBlock Text="전체 선택 해제" Margin="4,0,0,0" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
             <Button Click="AddButton_Click">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <SymbolIcon Symbol="Add"/>
@@ -33,6 +39,12 @@
                     <TextBlock Text="삭제" Margin="4,0,0,0" VerticalAlignment="Center"/>
                 </StackPanel>
             </Button>
+            <Button Click="DeleteAllButton_Click">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <SymbolIcon Symbol="Clear"/>
+                    <TextBlock Text="전체 삭제" Margin="4,0,0,0" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>            
             <TextBox x:Name="FindTextBox" Width="320" PlaceholderText="검색어 입력" Margin="16,0,0,0"/>
             <Button Click="FindButton_Click">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">

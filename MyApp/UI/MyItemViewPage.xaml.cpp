@@ -75,6 +75,11 @@ namespace winrt::MyApp::implementation
         OutputDebugStringW(L"\n");
     }
 
+    void MyItemViewPage::UnselectAllButton_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
+    {
+
+    }
+
     void MyItemViewPage::AddButton_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
 
@@ -86,6 +91,10 @@ namespace winrt::MyApp::implementation
     }
 
     void MyItemViewPage::DeleteButton_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
+    {
+
+    }
+    void MyItemViewPage::DeleteAllButton_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
 
     }
