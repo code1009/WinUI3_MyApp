@@ -12,13 +12,11 @@
 
 #include "NavigationParam.h"
 
-namespace winrt
-{
-    using namespace Microsoft::UI::Xaml;
-    using namespace Microsoft::UI::Xaml::Controls;
-    using namespace Microsoft::UI::Xaml::Navigation;
-    using namespace Windows::Foundation;
-}
+using namespace winrt;
+using namespace Microsoft::UI::Xaml;
+using namespace Microsoft::UI::Xaml::Controls;
+using namespace Microsoft::UI::Xaml::Navigation;
+using namespace Windows::Foundation;
 
 namespace winrt::MyApp::implementation
 {
@@ -29,7 +27,7 @@ namespace winrt::MyApp::implementation
 
     void SettingsPage::OnNavigatedTo(NavigationEventArgs const& eventArgs)
     {
-        auto param = eventArgs.Parameter().try_as<winrt::MyApp::NavigationParam>();
+        auto param = eventArgs.Parameter().try_as<MyApp::NavigationParam>();
         if (param)
         {
             _MainPage = param.MainPage();

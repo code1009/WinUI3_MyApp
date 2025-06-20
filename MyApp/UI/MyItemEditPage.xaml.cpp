@@ -32,7 +32,7 @@ namespace winrt::MyApp::implementation
 
     void MyItemEditPage::OnNavigatedTo(NavigationEventArgs const& eventArgs)
     {
-        auto param = eventArgs.Parameter().try_as<winrt::MyApp::NavigationParam>();
+        auto param = eventArgs.Parameter().try_as<MyApp::NavigationParam>();
         if (param)
         {
             _MainPage = param.MainPage();
@@ -44,7 +44,7 @@ namespace winrt::MyApp::implementation
 
 		_Command = param.Command();
 
-        auto item = param.Param0().try_as<winrt::MyApp::MyItem>();
+        auto item = param.Param0().try_as<MyApp::MyItem>();
         if (item)
         {
             _Item = item;

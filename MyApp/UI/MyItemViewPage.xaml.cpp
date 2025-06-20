@@ -37,7 +37,7 @@ namespace winrt::MyApp::implementation
 
     void MyItemViewPage::OnNavigatedTo(NavigationEventArgs const& eventArgs)
     {
-        auto param = eventArgs.Parameter().try_as<winrt::MyApp::NavigationParam>();
+        auto param = eventArgs.Parameter().try_as<MyApp::NavigationParam>();
         if (param)
         {
             _MainPage = param.MainPage();
@@ -50,7 +50,7 @@ namespace winrt::MyApp::implementation
         ItemCountTextBlock_Update();
     }
 
-    winrt::Windows::Foundation::Collections::IObservableVector<winrt::MyApp::MyItem> MyItemViewPage::Items()
+    Collections::IObservableVector<MyApp::MyItem> MyItemViewPage::Items()
     {
 		return MyViewModel::Instance().Items();
     }
@@ -58,13 +58,13 @@ namespace winrt::MyApp::implementation
 #if 0
     void MyItemViewPage::ItemGridView_ItemClick(IInspectable const& /*sender*/, ItemClickEventArgs const& eventArgs)
     {
-        winrt::MyApp::MyItem persistedItem = eventArgs.ClickedItem().as<MyApp::MyItem>();
+        MyApp::MyItem persistedItem = eventArgs.ClickedItem().as<MyApp::MyItem>();
 
-        auto param = winrt::make<winrt::MyApp::implementation::NavigationParam>();
+        MyApp::NavigationParam param;
         param.MainPage(_MainPage);
         param.Param0(persistedItem);
 
-        Frame().Navigate(xaml_typename<winrt::MyApp::MyItemEditPage>(), param);
+        Frame().Navigate(xaml_typename<MyApp::MyItemEditPage>(), param);
     }
 
     void MyItemViewPage::ItemGridView_SelectionChanged(IInspectable const& /*sender*/, SelectionChangedEventArgs const& /*eventArgs*/)
@@ -79,7 +79,7 @@ namespace winrt::MyApp::implementation
 
         for (auto item : ItemGridView().SelectedItems())
         {
-            winrt::MyApp::MyItem persistedItem = item.as<winrt::MyApp::MyItem>();
+            MyApp::MyItem persistedItem = item.as<MyApp::MyItem>();
 
 			message = L"\t항목=" + persistedItem.Title() + L"\n";
             OutputDebugStringW(message.c_str());
@@ -128,7 +128,7 @@ namespace winrt::MyApp::implementation
         }
         else if (selectedItemCount == 1)
         {
-			auto item = selectedItems.GetAt(0).as<winrt::MyApp::MyItem>();
+			auto item = selectedItems.GetAt(0).as<MyApp::MyItem>();
             uint32_t itemPosition = 0;
             auto found = items.IndexOf(item, itemPosition);
             if (!found)
@@ -175,7 +175,7 @@ namespace winrt::MyApp::implementation
         }
         else if (selectedItemCount == 1)
         {
-            auto item = selectedItems.GetAt(0).as<winrt::MyApp::MyItem>();
+            auto item = selectedItems.GetAt(0).as<MyApp::MyItem>();
             uint32_t itemPosition = 0;
             auto found = items.IndexOf(item, itemPosition);
             if (!found)
@@ -204,8 +204,7 @@ namespace winrt::MyApp::implementation
 
     void MyItemViewPage::AddItem(uint32_t position)
     {
-        winrt::MyApp::MyItem item;
-        item = winrt::make<winrt::MyApp::implementation::MyItem>();
+        MyApp::MyItem item;
         item.Title(L"제목");
         item.Subtitle(L"부제목");
         item.Description(L"설명");
@@ -219,11 +218,11 @@ namespace winrt::MyApp::implementation
             Items().InsertAt(position, item);
 		}
 
-        auto param = winrt::make<winrt::MyApp::implementation::NavigationParam>();
+        MyApp::NavigationParam param;
         param.MainPage(_MainPage);
         param.Command(L"취소 시 목록에서 삭제");
         param.Param0(item);
-        Frame().Navigate(xaml_typename<winrt::MyApp::MyItemEditPage>(), param);
+        Frame().Navigate(xaml_typename<MyApp::MyItemEditPage>(), param);
     }
 
     void MyItemViewPage::EditItem(uint32_t position)
@@ -240,13 +239,13 @@ namespace winrt::MyApp::implementation
         }
         else
         {
-            winrt::MyApp::MyItem item;
+            MyApp::MyItem item;
             item = Items().GetAt(position);
             
-            auto param = winrt::make<winrt::MyApp::implementation::NavigationParam>();
+            MyApp::NavigationParam param;
             param.MainPage(_MainPage);
             param.Param0(item);
-            Frame().Navigate(xaml_typename<winrt::MyApp::MyItemEditPage>(), param);
+            Frame().Navigate(xaml_typename<MyApp::MyItemEditPage>(), param);
 		}
     }
 
@@ -267,10 +266,10 @@ namespace winrt::MyApp::implementation
         }
 
 
-        std::vector<winrt::MyApp::MyItem> itemsToRemove;
+        std::vector<MyApp::MyItem> itemsToRemove;
         for (auto const& item : selectedItems)
         {
-            itemsToRemove.push_back(item.as<winrt::MyApp::MyItem>());
+            itemsToRemove.push_back(item.as<MyApp::MyItem>());
         }
 
 
@@ -366,7 +365,7 @@ namespace winrt::MyApp::implementation
 
         for (auto const& element: items)
         {
-			winrt::MyApp::MyItem item = element.as<winrt::MyApp::MyItem>();
+			MyApp::MyItem item = element.as<MyApp::MyItem>();
             if (item.Title() == keyword )
             {
                 uint32_t itemPosition = 0;

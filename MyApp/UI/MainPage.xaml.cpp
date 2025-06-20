@@ -133,12 +133,10 @@ namespace winrt::MyApp::implementation
         // Only navigate if the selected page isn't currently loaded.
         if (prePageType.Name != pageType.Name)
         {
-            auto param = winrt::make<winrt::MyApp::implementation::NavigationParam>();
+            MyApp::NavigationParam param;
             param.MainPage(*this);
 
             DrillInNavigationTransitionInfo drillIn;
-            //ContentFrame().Navigate(pageType, nullptr, drillIn);
-            //ContentFrame().Navigate(pageType, *this, drillIn);
             ContentFrame().Navigate(pageType, param, drillIn);
         }
     }
