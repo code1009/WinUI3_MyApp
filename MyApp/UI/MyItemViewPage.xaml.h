@@ -34,6 +34,7 @@ namespace winrt::MyApp::implementation
 
 		void AddItem(uint32_t position);
         void EditItem(uint32_t position);
+        double ItemGridView_GetItemRowHeight(uint32_t index);
 
     public:
 		void ItemCountTextBlock_Update(void);

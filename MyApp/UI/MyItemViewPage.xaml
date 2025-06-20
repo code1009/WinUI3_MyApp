@@ -60,7 +60,7 @@
             </Button>
         </StackPanel>
 
-        <ScrollViewer Grid.Row="2" Margin="0,8,0,0">
+        <ScrollViewer x:Name="ItemGridViewScrollViewer" Grid.Row="2" Margin="0,8,0,0">
             
             <StackPanel Spacing="10" Margin="5,5,5,5">
                 <Grid>
