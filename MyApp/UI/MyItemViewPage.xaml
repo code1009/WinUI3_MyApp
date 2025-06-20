@@ -69,9 +69,10 @@
                         Grid.Row="1" Margin="0,0,0,0"
                         IsMultiSelectCheckBoxEnabled="True"
                         SelectionMode="Multiple"
-                        SelectionChanged="ItemGridView_SelectionChanged"
                         >
 <!--
+                        SelectionChanged="ItemGridView_SelectionChanged"
+
                         IsItemClickEnabled="True"
                         ItemClick="ItemGridView_ItemClick"
 -->

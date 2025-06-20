@@ -42,7 +42,8 @@ namespace winrt::MyApp::implementation
             throw hresult_error(E_FAIL, L"MainPage is not available.");
         }
 
-        
+		_Command = param.Command();
+
         auto item = param.Param0().try_as<winrt::MyApp::MyItem>();
         if (item)
         {
@@ -58,15 +59,15 @@ namespace winrt::MyApp::implementation
 
     void MyItemEditPage::OkButton_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
-        _MainPage.NotifyUser(L"확인", InfoBarSeverity::Informational);
-
-
         auto title = TitleTextBox().Text();
         auto subtitle = SubtitleTextBox().Text();
         auto description = DescriptionTextBox().Text();
 		_Item.Title(title);
 		_Item.Subtitle(subtitle);
 		_Item.Description(description);
+
+
+        _MainPage.NotifyUser(L"편집을 완료 했습니다.", InfoBarSeverity::Success);
 
 
        if (Frame().CanGoBack())
@@ -77,7 +78,27 @@ namespace winrt::MyApp::implementation
 
     void MyItemEditPage::CancelButton_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
-        _MainPage.NotifyUser(L"취소", InfoBarSeverity::Informational);
+        if (_Command == L"취소 시 목록에서 삭제")
+        {
+			auto item = _Item;
+			auto items = MyViewModel::Instance().Items();
+            uint32_t itemPosition = 0;
+            auto found = items.IndexOf(item, itemPosition);
+            if (found)
+            {
+                items.RemoveAt(itemPosition);
+
+                _MainPage.NotifyUser(L"추가를 취소 했습니다.", InfoBarSeverity::Informational);
+            }
+            else
+            {
+                _MainPage.NotifyUser(L"추가 취소를 하지 못했습니다.", InfoBarSeverity::Error);
+            }
+        }
+        else
+        {
+            _MainPage.NotifyUser(L"편집을 취소 했습니다.", InfoBarSeverity::Informational);
+        }
 
 
         if (Frame().CanGoBack())

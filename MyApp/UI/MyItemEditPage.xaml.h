@@ -10,6 +10,7 @@ namespace winrt::MyApp::implementation
     private:
         winrt::MyApp::MainPage _MainPage{ nullptr };
 		winrt::MyApp::MyItem _Item{ nullptr };
+		std::wstring _Command;
 
     public:
         MyItemEditPage();

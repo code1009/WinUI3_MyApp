@@ -54,6 +54,7 @@ namespace winrt::MyApp::implementation
 		return MyViewModel::Instance().Items();
     }
 
+#if 0
     void MyItemViewPage::ItemGridView_ItemClick(IInspectable const& /*sender*/, ItemClickEventArgs const& eventArgs)
     {
         winrt::MyApp::MyItem persistedItem = eventArgs.ClickedItem().as<MyApp::MyItem>();
@@ -67,15 +68,23 @@ namespace winrt::MyApp::implementation
 
     void MyItemViewPage::ItemGridView_SelectionChanged(IInspectable const& /*sender*/, SelectionChangedEventArgs const& /*eventArgs*/)
     {
-		OutputDebugStringW((L"Selected Item = " + std::to_wstring(ItemGridView().SelectedItems().Size()) + L"\n").c_str());
+        std::wstring message;
+
+
+        auto selectedItems = ItemGridView().SelectedItems();
+        uint32_t selectedItemCount = selectedItems.Size();
+        message = L"선택항목 " + std::to_wstring(selectedItemCount) + L"개\n";
+		OutputDebugStringW(message.c_str());
 
         for (auto item : ItemGridView().SelectedItems())
         {
             winrt::MyApp::MyItem persistedItem = item.as<winrt::MyApp::MyItem>();
-            OutputDebugStringW((L"Selected Item: " + persistedItem.Title() + L"\n").c_str());
+
+			message = L"\t항목=" + persistedItem.Title() + L"\n";
+            OutputDebugStringW(message.c_str());
 		}
-        OutputDebugStringW(L"\n");
     }
+#endif
 
     void MyItemViewPage::UnselectAllButton_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
@@ -84,12 +93,12 @@ namespace winrt::MyApp::implementation
 
 
         auto selectedItems = ItemGridView().SelectedItems();
-        uint32_t itemCount = selectedItems.Size();
-        if (itemCount > 0)
+        uint32_t selectedItemCount = selectedItems.Size();
+        if (selectedItemCount > 0)
         {
             selectedItems.Clear();
      
-            inforBarMessage = std::to_wstring(itemCount) + L"개의 항목을 선택 해제 했습니다.";
+            inforBarMessage = std::to_wstring(selectedItemCount) + L"개의 항목을 선택 해제 했습니다.";
         }
         else
         {
@@ -107,6 +116,7 @@ namespace winrt::MyApp::implementation
         std::wstring inforBarMessage;
 
 
+        auto items = Items();
         auto selectedItems = ItemGridView().SelectedItems();
         auto selectedItemCount = selectedItems.Size();
         if (selectedItemCount > 1)
@@ -118,21 +128,22 @@ namespace winrt::MyApp::implementation
         {
 			auto item = selectedItems.GetAt(0).as<winrt::MyApp::MyItem>();
             uint32_t itemPosition = 0;
-            auto items = Items();
             auto found = items.IndexOf(item, itemPosition);
             if (found)
             {
                 inforBarMessage = std::to_wstring(itemPosition + 1) + L"번째 항목 뒤에 추가합니다.";
+                AddItem(itemPosition + 1);
             }
             else
             {
-                inforBarMessage = L"항목을 찾을 수 없습니다.";
+                inforBarMessage = L"뒤에 추가 할 항목을 찾을 수 없습니다.";
                 inforBarSeverity = InfoBarSeverity::Error;
             }
         }
         else if (selectedItemCount == 0)
         {
             inforBarMessage = L"맨 막지막 위치에 추가합니다.";
+			AddItem(Items().Size());
         }
 
 
@@ -145,6 +156,7 @@ namespace winrt::MyApp::implementation
         std::wstring inforBarMessage;
 
 
+        auto items = Items();
         auto selectedItems = ItemGridView().SelectedItems();
         auto selectedItemCount = selectedItems.Size();
         if (selectedItemCount > 1)
@@ -156,15 +168,15 @@ namespace winrt::MyApp::implementation
         {
             auto item = selectedItems.GetAt(0).as<winrt::MyApp::MyItem>();
             uint32_t itemPosition = 0;
-            auto items = Items();
             auto found = items.IndexOf(item, itemPosition);
             if (found)
             {
                 inforBarMessage = std::to_wstring(itemPosition + 1) + L"번째 항목을 편집합니다.";
+				EditItem(itemPosition);
             }
             else
             {
-                inforBarMessage = L"항목을 찾을 수 없습니다.";
+                inforBarMessage = L"편집 할 항목을 찾을 수 없습니다.";
                 inforBarSeverity = InfoBarSeverity::Error;
             }
         }
@@ -178,6 +190,53 @@ namespace winrt::MyApp::implementation
         _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
     }
 
+    void MyItemViewPage::AddItem(uint32_t position)
+    {
+        winrt::MyApp::MyItem item;
+        item = winrt::make<winrt::MyApp::implementation::MyItem>();
+        item.Title(L"제목");
+        item.Subtitle(L"부제목");
+        item.Description(L"설명");
+        
+        if (position >= Items().Size())
+        {
+            Items().Append(item);
+        }
+        else
+        {
+            Items().InsertAt(position, item);
+		}
+
+        auto param = winrt::make<winrt::MyApp::implementation::NavigationParam>();
+        param.MainPage(_MainPage);
+        param.Command(L"취소 시 목록에서 삭제");
+        param.Param0(item);
+        Frame().Navigate(xaml_typename<winrt::MyApp::MyItemEditPage>(), param);
+    }
+
+    void MyItemViewPage::EditItem(uint32_t position)
+    {
+        if (position >= Items().Size())
+        {
+            InfoBarSeverity inforBarSeverity = InfoBarSeverity::Error;
+            std::wstring inforBarMessage;
+
+			inforBarMessage = L"편집할 항목이 잘못되었습니다.";
+
+            _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+        }
+        else
+        {
+            winrt::MyApp::MyItem item;
+            item = Items().GetAt(position);
+            
+            auto param = winrt::make<winrt::MyApp::implementation::NavigationParam>();
+            param.MainPage(_MainPage);
+            param.Param0(item);
+            Frame().Navigate(xaml_typename<winrt::MyApp::MyItemEditPage>(), param);
+		}
+    }
+
     void MyItemViewPage::DeleteButton_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
         InfoBarSeverity inforBarSeverity = InfoBarSeverity::Success;
@@ -185,8 +244,8 @@ namespace winrt::MyApp::implementation
 
 
         auto selectedItems = ItemGridView().SelectedItems();
-        uint32_t count = selectedItems.Size();
-        if (count == 0)
+        uint32_t selectedItemCount = selectedItems.Size();
+        if (selectedItemCount == 0)
         {
             inforBarMessage = L"선택 항목이 없습니다..\n한 개 이상의 항목을 선택 하십시오.";
             inforBarSeverity = InfoBarSeverity::Warning;
@@ -221,7 +280,7 @@ namespace winrt::MyApp::implementation
         ItemCountTextBlock_Update();
 
 
-        inforBarMessage = std::to_wstring(count) + L"개 항목을 삭제했습니다.";
+        inforBarMessage = std::to_wstring(selectedItemCount) + L"개 항목을 삭제했습니다.";
         inforBarSeverity = InfoBarSeverity::Success;
         _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
     }
@@ -233,8 +292,8 @@ namespace winrt::MyApp::implementation
 
 
         auto items = Items();
-        uint32_t count = items.Size();
-        if (count == 0)
+        uint32_t itemCount = items.Size();
+        if (itemCount == 0)
         {
 			inforBarMessage = L"삭제할 항목이 없습니다.";
             inforBarSeverity = InfoBarSeverity::Warning;
@@ -245,7 +304,7 @@ namespace winrt::MyApp::implementation
             ItemGridView().SelectedItems().Clear();
             ItemCountTextBlock_Update();
 
-            inforBarMessage = L"모든 항목을 삭제했습니다.(" + std::to_wstring(count) + L"개)";
+            inforBarMessage = L"모든 항목을 삭제했습니다.(" + std::to_wstring(itemCount) + L"개)";
         }
         
 
