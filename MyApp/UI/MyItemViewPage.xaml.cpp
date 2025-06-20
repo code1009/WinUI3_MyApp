@@ -18,6 +18,7 @@ using namespace winrt;
 using namespace Microsoft::UI::Xaml;
 using namespace Microsoft::UI::Xaml::Controls;
 using namespace Microsoft::UI::Xaml::Navigation;
+using namespace Microsoft::UI::Xaml::Input;
 using namespace Windows::Foundation;
 
 namespace winrt::MyApp::implementation
@@ -388,6 +389,14 @@ namespace winrt::MyApp::implementation
                 }
                 break;
 			}            
+        }
+    }
+
+    void MyItemViewPage::FindTextBox_KeyDown(IInspectable const& /*sender*/, KeyRoutedEventArgs const& eventArgs)
+    {
+        if (eventArgs.Key() == Windows::System::VirtualKey::Enter)
+        {
+            FindButton_Click(nullptr, nullptr);
         }
     }
 

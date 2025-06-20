@@ -51,7 +51,9 @@
         <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="4" Margin="8,8,8,0" HorizontalAlignment="Stretch">
             <TextBlock x:Name="ItemCountTextBlock"
                        Margin="4,0,0,0" VerticalAlignment="Center"/>
-            <TextBox x:Name="FindTextBox" Width="320" PlaceholderText="검색 제목 입력" Margin="16,0,0,0"/>
+            <TextBox x:Name="FindTextBox" KeyDown="FindTextBox_KeyDown"
+                     Width="320" PlaceholderText="검색 제목 입력" Margin="16,0,0,0"                     
+                     />
             <Button Click="FindButton_Click">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <SymbolIcon Symbol="Find"/>

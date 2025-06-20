@@ -32,6 +32,8 @@ namespace winrt::MyApp::implementation
         void DeleteAllButton_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& eventArgs);
         void FindButton_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& eventArgs);
 
+        void FindTextBox_KeyDown(IInspectable const& sender, Microsoft::UI::Xaml::Input::KeyRoutedEventArgs const& eventArgs);
+
 		void AddItem(uint32_t position);
         void EditItem(uint32_t position);
         double ItemGridView_GetItemRowHeight(uint32_t index);
