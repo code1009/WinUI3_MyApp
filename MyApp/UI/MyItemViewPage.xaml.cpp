@@ -383,7 +383,7 @@ namespace winrt::MyApp::implementation
                     _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
 
                     ItemGridView().ScrollIntoView(item);
-                    auto rowHeight = ItemGridView_GetItemRowHeight(itemPosition) + 4.0;
+                    //auto rowHeight = ItemGridView_GetItemRowHeight(itemPosition) + 4.0;
                     //ItemGridViewScrollViewer().ChangeView(nullptr, static_cast<double>(36.0 + (itemPosition) * rowHeight), nullptr);
                 }
                 break;
