@@ -41,6 +41,39 @@ namespace winrt::MyApp::implementation
     Page1::Page1()
     {
         InitializeComponent();
+
+        this->Loaded({ this, &Page1::Page_Loaded });
+        this->Unloaded({ this, &Page1::Page_Unloaded });
+    }
+
+    
+    void Page1::Page_Loaded(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
+    {
+        if (!_DispatcherTimer)
+        {
+            _DispatcherTimer = Microsoft::UI::Xaml::DispatcherTimer();
+            //_DispatcherTimer.Interval(std::chrono::seconds(1));
+            _DispatcherTimer.Interval(std::chrono::milliseconds(1));
+            _DispatcherTimer.Tick(
+                { this, &Page1::DispatcherTimer_OnTick }
+            );
+        }
+        _TickCount = 0;
+        _DispatcherTimer.Start();
+    }
+
+    void Page1::Page_Unloaded(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
+    {
+        if (_DispatcherTimer)
+        {
+            _DispatcherTimer.Stop();
+        }
+    }
+    void Page1::DispatcherTimer_OnTick(IInspectable const& /*sender*/, IInspectable const& /*eventArgs*/)
+    {
+        _TickCount++;
+
+        Title().Text(winrt::to_hstring(_TickCount) + L"초 경과");
     }
 
     void Page1::OnNavigatedTo(NavigationEventArgs const& eventArgs)

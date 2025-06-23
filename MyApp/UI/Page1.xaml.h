@@ -8,9 +8,15 @@ namespace winrt::MyApp::implementation
     {
     private:
         winrt::MyApp::MainPage _MainPage{ nullptr };
+        Microsoft::UI::Xaml::DispatcherTimer _DispatcherTimer{ nullptr };
+        int _TickCount{ 0 };
 
     public:
         Page1();
+
+        void Page_Loaded(winrt::Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& eventArgs);
+        void Page_Unloaded(winrt::Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& eventArgs);
+        void DispatcherTimer_OnTick(winrt::Windows::Foundation::IInspectable const&, winrt::Windows::Foundation::IInspectable const&);
 
     public:
         void OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& eventArgs);
