@@ -4,8 +4,8 @@
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
 
-#include <shobjidl.h>
 #include <Unknwn.h>
+#include <shobjidl.h>
 
 // Undefine GetCurrentTime macro to prevent
 // conflict with Storyboard::GetCurrentTime

@@ -6,6 +6,7 @@
   <PropertyGroup Label="Globals">
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>true</SelfContained>
+    <WindowsAppSDKSelfContained>false</WindowsAppSDKSelfContained>
     <WindowsPackageType>None</WindowsPackageType>
     <CppWinRTOptimized>true</CppWinRTOptimized>
     <CppWinRTRootNamespaceAutoMerge>true</CppWinRTRootNamespaceAutoMerge>
