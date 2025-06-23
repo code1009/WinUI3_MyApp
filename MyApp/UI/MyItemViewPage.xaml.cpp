@@ -384,7 +384,7 @@ namespace winrt::MyApp::implementation
 
                     ItemGridView().ScrollIntoView(item);
                     auto rowHeight = ItemGridView_GetItemRowHeight(itemPosition) + 4.0;
-                    ItemGridViewScrollViewer().ChangeView(nullptr, static_cast<double>(36.0 + (itemPosition) * rowHeight), nullptr);
+                    //ItemGridViewScrollViewer().ChangeView(nullptr, static_cast<double>(36.0 + (itemPosition) * rowHeight), nullptr);
                 }
                 break;
 			}            

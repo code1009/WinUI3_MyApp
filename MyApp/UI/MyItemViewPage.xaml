@@ -62,10 +62,11 @@
             </Button>
         </StackPanel>
 
-        <ScrollViewer x:Name="ItemGridViewScrollViewer" Grid.Row="2" Margin="0,8,0,0">
+        <!-- ScrollViewer x:Name="ItemGridViewScrollViewer" Grid.Row="2" Margin="0,8,0,0" -->
             
-            <StackPanel Spacing="10" Margin="5,5,5,5">
-                <Grid>
+            <!-- StackPanel Spacing="10" Margin="5,5,5,5" -->
+                <!-- Grid -->
+            <Grid Grid.Row="2" Margin="0,8,0,0">
 
                     <GridView x:Name="ItemGridView" ItemsSource="{x:Bind Items}"
                         Grid.Row="1" Margin="0,0,0,0"
@@ -124,9 +125,9 @@
 
                 </Grid>
 
-            </StackPanel>
+            <!-- /StackPanel -->
             
-        </ScrollViewer>
+        <!-- /ScrollViewer -->
     </Grid>
     
 </Page>
