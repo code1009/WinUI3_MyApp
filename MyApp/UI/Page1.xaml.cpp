@@ -49,17 +49,19 @@ namespace winrt::MyApp::implementation
     
     void Page1::Page_Loaded(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
+#if 1
         if (!_DispatcherTimer)
         {
             _DispatcherTimer = Microsoft::UI::Xaml::DispatcherTimer();
-            //_DispatcherTimer.Interval(std::chrono::seconds(1));
-            _DispatcherTimer.Interval(std::chrono::milliseconds(1));
+            _DispatcherTimer.Interval(std::chrono::seconds(1));
+            //_DispatcherTimer.Interval(std::chrono::milliseconds(1));
             _DispatcherTimer.Tick(
                 { this, &Page1::DispatcherTimer_OnTick }
             );
         }
         _TickCount = 0;
         _DispatcherTimer.Start();
+#endif
     }
 
     void Page1::Page_Unloaded(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
