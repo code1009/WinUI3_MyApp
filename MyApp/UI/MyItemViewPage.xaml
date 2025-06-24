@@ -15,6 +15,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <!--
         <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="4" Margin="8,8,8,0" HorizontalAlignment="Stretch">
             <Button Click="AddButton_Click">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
@@ -46,6 +47,17 @@
                     <TextBlock Text="전체 선택 해제" Margin="4,0,0,0" VerticalAlignment="Center"/>
                 </StackPanel>
             </Button>
+        </StackPanel>
+        -->
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="4" Margin="8,8,8,0" HorizontalAlignment="Stretch">
+            <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right">
+                <AppBarButton Icon="Add" Label="추가" Click="AddButton_Click"/>
+                <AppBarButton Icon="Edit" Label="수정" Click="EditButton_Click"/>
+                <AppBarButton Icon="Share" Label="삭제" Click="DeleteButton_Click"/>
+                <AppBarButton Icon="Clear" Label="전체 삭제" Click="DeleteAllButton_Click"/>
+                <AppBarButton Icon="ClearSelection" Label="전체 선택 해제" Click="UnselectAllButton_Click"/>
+            </CommandBar>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="4" Margin="8,8,8,0" HorizontalAlignment="Stretch">
