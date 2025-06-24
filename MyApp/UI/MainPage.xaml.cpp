@@ -66,6 +66,8 @@ namespace winrt::MyApp::implementation
         InfoBar().Message(strMessage);
         InfoBar().IsOpen(!strMessage.empty());
         InfoBar().Severity(severity);
+
+        InfoBar().UpdateLayout();
     }
 
     void MainPage::NavView_Loaded(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)

@@ -382,7 +382,10 @@ namespace winrt::MyApp::implementation
                     inforBarMessage = std::to_wstring(itemPosition+ 1 ) + L"번쨰 항목 위치에 '" + keyword + L"'에 해당하는 항목을 찾았습니다";
                     _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
 
+
                     ItemGridView().ScrollIntoView(item);
+
+
                     //auto rowHeight = ItemGridView_GetItemRowHeight(itemPosition) + 4.0;
                     //ItemGridViewScrollViewer().ChangeView(nullptr, static_cast<double>(36.0 + (itemPosition) * rowHeight), nullptr);
                 }
