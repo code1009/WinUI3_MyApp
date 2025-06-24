@@ -14,11 +14,16 @@
                         Width="{TemplateBinding Width}"
                         Height="{TemplateBinding Height}"
                         >
+                        <StackPanel Spacing="10" Margin="10,10,10,10">
+                            <TextBox x:Name="Name1TextBox" />
+                            <TextBox x:Name="Name2TextBox" />
+                        </StackPanel>
                     </Border>
                     <!--
                         Width="{TemplateBinding Width}"
                         Height="{TemplateBinding Height}"
                     -->
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

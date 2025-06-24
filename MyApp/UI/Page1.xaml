@@ -15,7 +15,7 @@
                     Add scenario description text here.
                 </TextBlock>
 
-                <local:MyCustomControl x:Name="MyControl" Width="200" Height="50" Background="AntiqueWhite" BorderThickness="5,5,5,5"/>
+                <local:MyCustomControl x:Name="MyControl"/>
 
                 <Button Content="MyCustomControl" Click="MyCustomControl_Set1_Click" />
                 <Button Content="MyCustomControl" Click="MyCustomControl_Set2_Click" />

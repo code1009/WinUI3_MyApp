@@ -41,15 +41,17 @@ namespace winrt::MyApp::implementation
     {
         if (auto border = GetTemplateChild(L"MyBorder").try_as<Border>())
         {
-            //border.Height(10);
-            //border.Width(10);
+            //border.Height(100);
+            //border.Width(100);
 
             winrt::Windows::UI::Color bkColor;
+            winrt::Windows::UI::Color borderColor;
 
             bkColor = winrt::Windows::UI::Colors::Blue();
-            
-            //border.Background(SolidColorBrush(bkColor));
+            borderColor = winrt::Windows::UI::Colors::Black();
 
+            border.Background(SolidColorBrush(bkColor));
+            border.BorderBrush(SolidColorBrush(borderColor));
             border.BorderThickness(
                 ThicknessHelper::FromLengths(2.0, 2.0, 2.0, 2.0)
             );
