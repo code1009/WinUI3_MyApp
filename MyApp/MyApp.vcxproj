@@ -119,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Resource\Resource.h" />
     <ClInclude Include="UI\App.xaml.h">
       <DependentUpon>UI\App.xaml</DependentUpon>
     </ClInclude>
@@ -275,6 +276,7 @@
     <Image Include="Assets\StoreLogo.png" />
     <Image Include="Assets\Wide310x150Logo.scale-200.png" />
     <Image Include="Assets\windows-sdk.ico" />
+    <Image Include="Resource\app.ico" />
   </ItemGroup>
   <!--
     Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
@@ -287,6 +289,9 @@
   <ItemGroup>
     <None Include="..\ReadMe.md" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource\Resource.rc" />
   </ItemGroup>
   <!--
     Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution

@@ -30,9 +30,24 @@ namespace winrt::MyApp::implementation
         HWND hwnd = GetWindowHandle();
         //LoadIconFromFileSystem(hwnd, L"Assets/windows-sdk.ico");
 		
-        HICON icon = LoadIcon(nullptr, MAKEINTRESOURCEW(IDI_APP));
-        SendMessageW(hwnd, WM_SETICON, ICON_SMALL, reinterpret_cast<LPARAM>(icon));
-        SendMessageW(hwnd, WM_SETICON, ICON_BIG, reinterpret_cast<LPARAM>(icon));
+
+#if 0
+        HANDLE hSmallIcon = LoadImageW(nullptr, MAKEINTRESOURCEW(IDI_APP), IMAGE_ICON,
+            GetSystemMetrics(SM_CXSMICON), GetSystemMetrics(SM_CYSMICON),
+            LR_SHARED);
+        HANDLE hBigIcon = LoadImageW(nullptr, MAKEINTRESOURCEW(IDI_APP), IMAGE_ICON,
+            GetSystemMetrics(SM_CXICON), GetSystemMetrics(SM_CYICON),
+            LR_SHARED);
+		
+        SendMessageW(hwnd, WM_SETICON, ICON_SMALL, reinterpret_cast<LPARAM>(hSmallIcon));
+        SendMessageW(hwnd, WM_SETICON, ICON_BIG, reinterpret_cast<LPARAM>(hBigIcon));
+#else
+        HICON hIcon = LoadIconW(nullptr, MAKEINTRESOURCEW(IDI_APP));
+        if (hIcon)
+        {
+            SendMessageW(hwnd, WM_SETICON, ICON_SMALL, reinterpret_cast<LPARAM>(hIcon));
+		}
+#endif
 
         SetWindowSize(hwnd, 1920/2, 1080/2);
         PlacementCenterWindowInMonitorWin32(hwnd);
