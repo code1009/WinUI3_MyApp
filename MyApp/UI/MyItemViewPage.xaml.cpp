@@ -86,6 +86,88 @@ namespace winrt::MyApp::implementation
 		}
     }
 #endif
+    void MyItemViewPage::ItemGridView_RightTapped(IInspectable const& sender, RightTappedRoutedEventArgs eventArgs)
+    {
+        InfoBarSeverity inforBarSeverity;
+        std::wstring inforBarMessage;
+
+
+        GridView gridView = sender.as<GridView>();
+
+        Item_MenuFlyout().ShowAt(gridView, eventArgs.GetPosition(gridView));
+
+		auto frameworkElement = eventArgs.OriginalSource().as<FrameworkElement>();
+        if (frameworkElement)
+        {
+            auto container = gridView.ContainerFromItem(frameworkElement.DataContext());
+            if (container)
+            {
+                auto index = gridView.IndexFromContainer(container);
+                if (index != -1)
+                {
+                    auto items = Items();
+                    auto found = items.GetAt(index);
+                    if (!found)
+                    {
+                        inforBarSeverity = InfoBarSeverity::Error;
+                        inforBarMessage = L"오른쪽탭에서 항목을 찾을 수 없습니다.";
+                        _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+
+                        _RightTappedItem = nullptr;
+                    }
+                    else
+                    {
+                        inforBarSeverity = InfoBarSeverity::Success;
+                        inforBarMessage = std::to_wstring(index + 1) + L"번째 항목에서 찾았습니다.";
+                        _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+
+                        _RightTappedItem = found;
+                    }
+                }
+            }
+		}
+    }
+
+    void MyItemViewPage::Item_MenuFlyout_Open(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
+    {
+        InfoBarSeverity inforBarSeverity;
+        std::wstring inforBarMessage;
+
+
+        if (_RightTappedItem)
+        {
+            auto item = _RightTappedItem;
+            auto items = Items();
+            uint32_t itemPosition = 0;
+            auto found = items.IndexOf(item, itemPosition);
+            if (!found)
+            {
+                inforBarSeverity = InfoBarSeverity::Error;
+                inforBarMessage = L"열기 항목을 찾을 수 없습니다.";
+                _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+            }
+            else
+            {
+                inforBarSeverity = InfoBarSeverity::Success;
+                inforBarMessage = std::to_wstring(itemPosition + 1) + L"번째 항목에서 열기 항목을 찾았습니다.";
+                _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+            }
+        }
+        else
+        {
+            inforBarSeverity = InfoBarSeverity::Error;
+            inforBarMessage = L"대상 항목을 찾을 수 없습니다.";
+            _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+        }
+    }
+
+    void MyItemViewPage::Item_MenuFlyout_Remove(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
+    {
+    }
+
+    void MyItemViewPage::Item_MenuFlyout_Edit(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
+    {
+    }
 
     void MyItemViewPage::UnselectAllButton_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {

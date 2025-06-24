@@ -9,6 +9,7 @@ namespace winrt::MyApp::implementation
     {
     private:
         winrt::MyApp::MainPage _MainPage{ nullptr };
+		winrt::MyApp::MyItem _RightTappedItem{ nullptr };
 
     public:
         MyItemViewPage();
@@ -23,6 +24,11 @@ namespace winrt::MyApp::implementation
     public:
         //void ItemGridView_ItemClick(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::Controls::ItemClickEventArgs const& eventArgs);
         //void ItemGridView_SelectionChanged(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::Controls::SelectionChangedEventArgs const& eventArgs);
+
+        void ItemGridView_RightTapped(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::Input::RightTappedRoutedEventArgs eventArgs);
+        void Item_MenuFlyout_Edit(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& eventArgs);
+        void Item_MenuFlyout_Remove(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& eventArgs);
+        void Item_MenuFlyout_Open(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& eventArgs);
 
     public:
         void UnselectAllButton_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& eventArgs);
