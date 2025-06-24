@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "App.xaml.g.h"
+#include "UI\MyCustomControl.h"
 
 namespace winrt::MyApp::implementation
 {

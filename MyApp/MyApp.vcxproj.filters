@@ -16,6 +16,10 @@
     <ClCompile Include="UI\MyViewModel.cpp">
       <Filter>UI</Filter>
     </ClCompile>
+    <ClCompile Include="UI\NavigationParam.cpp" />
+    <ClCompile Include="UI\MyCustomControl.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
@@ -42,6 +46,8 @@
     <Image Include="Assets\windows-sdk.ico">
       <Filter>Assets</Filter>
     </Image>
+    <Image Include="..\1.png" />
+    <Image Include="..\2.png" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Assets">
@@ -56,6 +62,9 @@
     <Filter Include="Entry">
       <UniqueIdentifier>{8e69a4a8-6552-4417-ad42-b32e83256f1e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Themes">
+      <UniqueIdentifier>{6d6187b8-6129-49a6-921d-b337c71296f5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Manifest Include="app.manifest">
@@ -66,6 +75,7 @@
     <None Include="packages.config">
       <Filter>BuildSettings</Filter>
     </None>
+    <None Include="..\ReadMe.md" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt">
@@ -97,6 +107,10 @@
     <Page Include="UI\SettingsPage.xaml">
       <Filter>UI</Filter>
     </Page>
+    <Page Include="UI\MyDialog.xaml" />
+    <Page Include="Themes\MyCustomControl.ResourceDictionary.xaml">
+      <Filter>Themes</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -114,6 +128,7 @@
     <ClInclude Include="UI\pch.h">
       <Filter>UI</Filter>
     </ClInclude>
+    <ClInclude Include="UI\NavigationParam.h" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="UI\MainWindow.idl">
@@ -143,10 +158,15 @@
     <Midl Include="UI\MainPage.idl">
       <Filter>UI</Filter>
     </Midl>
+    <Midl Include="UI\NavigationParam.idl" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="UI\App.xaml">
       <Filter>UI</Filter>
     </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natvis" />
+    <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natstepfilter" />
   </ItemGroup>
 </Project>

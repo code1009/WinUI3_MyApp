@@ -9,6 +9,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ms-appx:///Styles.xaml"/>
+                <ResourceDictionary Source="ms-appx:///Themes/MyCustomControl.ResourceDictionary.xaml"/>                
             </ResourceDictionary.MergedDictionaries>
             <SolidColorBrush x:Key="WindowCaptionBackground" Color="Transparent" />
             <SolidColorBrush x:Key="WindowCaptionBackgroundDisabled" Color="Transparent" />

@@ -34,6 +34,8 @@ using namespace winrt;
 using namespace Microsoft::UI::Xaml;
 using namespace Microsoft::UI::Xaml::Controls;
 using namespace Microsoft::UI::Xaml::Navigation;
+using namespace Microsoft::UI::Xaml::Media;
+
 //using namespace Windows::Foundation;
 
 namespace winrt::MyApp::implementation
@@ -89,6 +91,24 @@ namespace winrt::MyApp::implementation
         {
             throw hresult_error(E_FAIL, L"MainPage is not available.");
 		}
+    }
+    
+    void Page1::MyCustomControl_Set1_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
+    {
+        MyControl().BackgroundColor(
+            winrt::Windows::UI::Colors::Green()
+		);
+
+        MyControl().Background(
+            SolidColorBrush(winrt::Windows::UI::Colors::Yellow())
+        );
+    }
+
+    void Page1::MyCustomControl_Set2_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
+    {
+        MyControl().Background(
+            SolidColorBrush(winrt::Windows::UI::Colors::Red())
+            );
     }
 
     void Page1::SuccessMessage_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)

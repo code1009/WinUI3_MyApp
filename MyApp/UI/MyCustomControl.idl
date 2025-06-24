@@ -1,0 +1,10 @@
+namespace MyApp
+{
+    [default_interface]
+    runtimeclass MyCustomControl : Microsoft.UI.Xaml.Controls.Control
+    {
+        Windows.UI.Color BackgroundColor;
+
+        MyCustomControl();
+    }
+}

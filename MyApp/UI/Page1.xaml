@@ -14,6 +14,12 @@
                 <TextBlock Style="{StaticResource ScenarioDescriptionTextStyle}" TextWrapping="Wrap">
                     Add scenario description text here.
                 </TextBlock>
+
+                <local:MyCustomControl x:Name="MyControl" Width="200" Height="50" Background="AntiqueWhite" BorderThickness="5,5,5,5"/>
+
+                <Button Content="MyCustomControl" Click="MyCustomControl_Set1_Click" />
+                <Button Content="MyCustomControl" Click="MyCustomControl_Set2_Click" />
+
                 <Button Content="Show Success Message" Click="SuccessMessage_Click" />
                 <Button Content="Show Error Message" Click="ErrorMessage_Click" />
                 <Button Content="Show Info Message" Click="InformationalMessage_Click" />

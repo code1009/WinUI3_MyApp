@@ -124,6 +124,10 @@
     <ClInclude Include="UI\MainWindow.xaml.h">
       <DependentUpon>UI\MainWindow.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="UI\MyCustomControl.h">
+      <DependentUpon>UI\MyCustomControl.cpp</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="UI\MyDialog.xaml.h">
       <DependentUpon>UI\MyDialog.xaml</DependentUpon>
     </ClInclude>
@@ -152,6 +156,7 @@
       <FileType>Document</FileType>
     </ApplicationDefinition>
     <Page Include="Styles.xaml" />
+    <Page Include="Themes\MyCustomControl.ResourceDictionary.xaml" />
     <Page Include="UI\MainPage.xaml" />
     <Page Include="UI\MainWindow.xaml" />
     <Page Include="UI\MyDialog.xaml" />
@@ -162,6 +167,10 @@
     <Page Include="UI\SettingsPage.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <Midl Include="UI\MyCustomControl.idl">
+      <DependentUpon>UI\MyCustomControl.cpp</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
     <Midl Include="UI\MyItem.idl">
       <SubType>Code</SubType>
     </Midl>
@@ -219,6 +228,9 @@
     </ClCompile>
     <ClCompile Include="UI\MainWindow.xaml.cpp">
       <DependentUpon>UI\MainWindow.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="UI\MyCustomControl.cpp">
+      <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="UI\MyDialog.xaml.cpp">
       <DependentUpon>UI\MyDialog.xaml</DependentUpon>
