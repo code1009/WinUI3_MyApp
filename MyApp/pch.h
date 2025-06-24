@@ -1,7 +1,10 @@
 ﻿#pragma once
 
+#define DISABLE_XAML_GENERATED_MAIN
+
 #define NOMINMAX
 #define WIN32_LEAN_AND_MEAN
+
 #include <Windows.h>
 
 #include <Unknwn.h>

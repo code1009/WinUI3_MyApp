@@ -8,62 +8,53 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Title="MyApp">
-    <StackPanel>
-        <MenuBar>
-            <MenuBarItem Title="File">
-                <MenuFlyoutItem Text="New">
-                    <MenuFlyoutItem.Icon>
-                        <SymbolIcon Symbol="Page"/>
-                    </MenuFlyoutItem.Icon>
-                </MenuFlyoutItem>
-                <MenuFlyoutItem Text="Open...">
-                    <MenuFlyoutItem.Icon>
-                        <SymbolIcon Symbol="OpenFile"/>
-                    </MenuFlyoutItem.Icon>
-                </MenuFlyoutItem>
-                <MenuFlyoutItem Text="Save">
-                    <MenuFlyoutItem.Icon>
-                        <SymbolIcon Symbol="Save"/>
-                    </MenuFlyoutItem.Icon>
-                </MenuFlyoutItem>
-                <MenuFlyoutItem Text="Exit">
-                    <MenuFlyoutItem.Icon>
-                        <SymbolIcon Symbol="ClosePane"/>
-                    </MenuFlyoutItem.Icon>
-                </MenuFlyoutItem>
-            </MenuBarItem>
 
-            <MenuBarItem Title="Edit">
-                <MenuFlyoutItem Text="Undo">
-                    <MenuFlyoutItem.Icon>
-                        <SymbolIcon Symbol="Undo"/>
-                    </MenuFlyoutItem.Icon>
-                </MenuFlyoutItem>
-                <MenuFlyoutItem Text="Cut">
-                    <MenuFlyoutItem.Icon>
-                        <SymbolIcon Symbol="Cut"/>
-                    </MenuFlyoutItem.Icon>
-                </MenuFlyoutItem>
-                <MenuFlyoutItem Text="Copy">
-                    <MenuFlyoutItem.Icon>
-                        <SymbolIcon Symbol="Copy"/>
-                    </MenuFlyoutItem.Icon>
-                </MenuFlyoutItem>
-                <MenuFlyoutItem Text="Paste">
-                    <MenuFlyoutItem.Icon>
-                        <SymbolIcon Symbol="Paste"/>
-                    </MenuFlyoutItem.Icon>
-                </MenuFlyoutItem>
-            </MenuBarItem>
+    <Grid>
+        <Grid>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="MyApp" FontSize="14" FontWeight="Bold" Margin="8,8,0,8" />
+                <StackPanel>
+                    <MenuBar>
+                    <MenuBarItem Title="파일">
+                        <MenuFlyoutItem Text="새로 만들기">
+                            <MenuFlyoutItem.Icon>
+                                <SymbolIcon Symbol="Page"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem Text="열기">
+                            <MenuFlyoutItem.Icon>
+                                <SymbolIcon Symbol="OpenFile"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem Text="저장">
+                            <MenuFlyoutItem.Icon>
+                                <SymbolIcon Symbol="Save"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
 
-            <MenuBarItem Title="Help">
-                <MenuFlyoutItem Text="About">
-                    <MenuFlyoutItem.Icon>
-                        <SymbolIcon Symbol="Help"/>
-                    </MenuFlyoutItem.Icon>
-                </MenuFlyoutItem>
-            </MenuBarItem>
-        </MenuBar>
-        <local:MainPage/>
-    </StackPanel>
+                        <MenuFlyoutSeparator />
+
+                        <MenuFlyoutItem Text="종료" Click="Exit_MenuFlyoutItem_Click" >
+                            <MenuFlyoutItem.Icon>
+                                <SymbolIcon Symbol="ClosePane"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                    </MenuBarItem>
+
+                    <MenuBarItem Title="도움말">
+                        <MenuFlyoutItem Text="정보">
+                            <MenuFlyoutItem.Icon>
+                                <SymbolIcon Symbol="Help"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                    </MenuBarItem>
+                </MenuBar>
+            </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid Margin="0,36,0,0">
+            <local:MainPage/>
+        </Grid>
+    </Grid>
+    
 </Window>

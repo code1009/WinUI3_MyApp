@@ -26,18 +26,19 @@ namespace winrt::MyApp::implementation
         InitializeComponent();
 
         Title(L"MyApp");
+        ExtendsContentIntoTitleBar(true);
 
         HWND hwnd = GetWindowHandle();
-        //LoadIconFromFileSystem(hwnd, L"Assets/windows-sdk.ico");
+        LoadIconFromFileSystem(hwnd, L"Assets/windows-sdk.ico");
 		
-
+#if 0
 #if 0
         HANDLE hSmallIcon = LoadImageW(nullptr, MAKEINTRESOURCEW(IDI_APP), IMAGE_ICON,
             GetSystemMetrics(SM_CXSMICON), GetSystemMetrics(SM_CYSMICON),
-            LR_SHARED);
+            0);
         HANDLE hBigIcon = LoadImageW(nullptr, MAKEINTRESOURCEW(IDI_APP), IMAGE_ICON,
             GetSystemMetrics(SM_CXICON), GetSystemMetrics(SM_CYICON),
-            LR_SHARED);
+            0);
 		
         SendMessageW(hwnd, WM_SETICON, ICON_SMALL, reinterpret_cast<LPARAM>(hSmallIcon));
         SendMessageW(hwnd, WM_SETICON, ICON_BIG, reinterpret_cast<LPARAM>(hBigIcon));
@@ -45,10 +46,11 @@ namespace winrt::MyApp::implementation
         HICON hIcon = LoadIconW(nullptr, MAKEINTRESOURCEW(IDI_APP));
         if (hIcon)
         {
+            SendMessageW(hwnd, WM_SETICON, ICON_BIG, reinterpret_cast<LPARAM>(hIcon));
             SendMessageW(hwnd, WM_SETICON, ICON_SMALL, reinterpret_cast<LPARAM>(hIcon));
-		}
+        }
 #endif
-
+#endif
         SetWindowSize(hwnd, 1920/2, 1080/2);
         PlacementCenterWindowInMonitorWin32(hwnd);
 
@@ -112,4 +114,10 @@ namespace winrt::MyApp::implementation
         adjustedWindowRect.right = adjustedWindowRect.left + w;
         adjustedWindowRect.bottom = adjustedWindowRect.top + h;
     }
+
+    void MainWindow::Exit_MenuFlyoutItem_Click(winrt::Windows::Foundation::IInspectable const& /*sender*/, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& /*eventArgs*/)
+    {
+        Close();
+    }
 }
+

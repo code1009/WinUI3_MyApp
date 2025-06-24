@@ -78,13 +78,13 @@ BEGIN
     BEGIN
         BLOCK "041204b0"
         BEGIN
-            VALUE "CompanyName", "TODO: <회사 이름>"
-            VALUE "FileDescription", "TODO: <파일 설명>"
+            VALUE "CompanyName", "code1009"
+            VALUE "FileDescription", "MyApp"
             VALUE "FileVersion", "1.0.0.1"
-            VALUE "InternalName", "TODO: <내부 이름>"
-            VALUE "LegalCopyright", "Copyright (C) 2025"
-            VALUE "OriginalFilename", "TODO: <원본 파일 이름>"
-            VALUE "ProductName", "TODO: <제품 이름>"
+            VALUE "InternalName", "code1009"
+            VALUE "LegalCopyright", "Copyright (C) 2025 code1009"
+            VALUE "OriginalFilename", "MyApp.exe"
+            VALUE "ProductName", "code1009"
             VALUE "ProductVersion", "1.0.0.1"
         END
     END

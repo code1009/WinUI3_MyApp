@@ -18,6 +18,8 @@ namespace winrt::MyApp::implementation
         void LoadIconFromFileSystem(HWND hwnd, wchar_t const* iconName);
         void ClipOrCenterRectToMonitorWin32(RECT& rc);
         void PlacementCenterWindowInMonitorWin32(HWND hwnd);
+    public:
+        void Exit_MenuFlyoutItem_Click(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& e);
     };
 }
 
