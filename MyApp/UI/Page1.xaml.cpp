@@ -282,7 +282,7 @@ namespace winrt::MyApp::implementation
 
 
         winrt::Windows::Storage::Pickers::FileOpenPicker picker;
-        picker.as<::IInitializeWithWindow>()->Initialize(hwnd);
+        picker.as<IInitializeWithWindow>()->Initialize(hwnd);
 
 
         picker.ViewMode(PickerViewMode::Thumbnail);

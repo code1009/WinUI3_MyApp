@@ -11,6 +11,8 @@
 
 #endif
 
+#include "../Resource/Resource.h"
+
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
 
@@ -26,7 +28,12 @@ namespace winrt::MyApp::implementation
         Title(L"MyApp");
 
         HWND hwnd = GetWindowHandle();
-        LoadIcon(hwnd, L"Assets/windows-sdk.ico");
+        //LoadIconFromFileSystem(hwnd, L"Assets/windows-sdk.ico");
+		
+        HICON icon = LoadIcon(nullptr, MAKEINTRESOURCEW(IDI_APP));
+        SendMessageW(hwnd, WM_SETICON, ICON_SMALL, reinterpret_cast<LPARAM>(icon));
+        SendMessageW(hwnd, WM_SETICON, ICON_BIG, reinterpret_cast<LPARAM>(icon));
+
         SetWindowSize(hwnd, 1920/2, 1080/2);
         PlacementCenterWindowInMonitorWin32(hwnd);
 
@@ -43,7 +50,7 @@ namespace winrt::MyApp::implementation
         return _hwnd;
     }
 
-    void MainWindow::LoadIcon(HWND hwnd, wchar_t const* iconPath)
+    void MainWindow::LoadIconFromFileSystem(HWND hwnd, wchar_t const* iconPath)
     {
         HANDLE hSmallIcon = LoadImageW(nullptr, iconPath, IMAGE_ICON,
             GetSystemMetrics(SM_CXSMICON), GetSystemMetrics(SM_CYSMICON),
