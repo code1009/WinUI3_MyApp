@@ -16,8 +16,10 @@
     <ClCompile Include="UI\MyViewModel.cpp">
       <Filter>UI</Filter>
     </ClCompile>
-    <ClCompile Include="UI\NavigationParam.cpp" />
     <ClCompile Include="UI\MyCustomControl.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\NavigationParam.cpp">
       <Filter>UI</Filter>
     </ClCompile>
   </ItemGroup>
@@ -83,9 +85,6 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Styles.xaml">
-      <Filter>Entry</Filter>
-    </Page>
     <Page Include="UI\MainPage.xaml">
       <Filter>UI</Filter>
     </Page>
@@ -107,8 +106,13 @@
     <Page Include="UI\SettingsPage.xaml">
       <Filter>UI</Filter>
     </Page>
-    <Page Include="UI\MyDialog.xaml" />
     <Page Include="Themes\MyCustomControl.ResourceDictionary.xaml">
+      <Filter>Themes</Filter>
+    </Page>
+    <Page Include="UI\MyDialog.xaml">
+      <Filter>UI</Filter>
+    </Page>
+    <Page Include="Themes\Styles.xaml">
       <Filter>Themes</Filter>
     </Page>
   </ItemGroup>
@@ -128,7 +132,9 @@
     <ClInclude Include="UI\pch.h">
       <Filter>UI</Filter>
     </ClInclude>
-    <ClInclude Include="UI\NavigationParam.h" />
+    <ClInclude Include="UI\NavigationParam.h">
+      <Filter>UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="UI\MainWindow.idl">
@@ -158,7 +164,9 @@
     <Midl Include="UI\MainPage.idl">
       <Filter>UI</Filter>
     </Midl>
-    <Midl Include="UI\NavigationParam.idl" />
+    <Midl Include="UI\NavigationParam.idl">
+      <Filter>UI</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="UI\App.xaml">

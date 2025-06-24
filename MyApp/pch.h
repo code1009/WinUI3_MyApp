@@ -7,6 +7,10 @@
 #include <Unknwn.h>
 #include <shobjidl.h>
 
+#include <format>
+#include <string>
+#include <iostream>
+
 // Undefine GetCurrentTime macro to prevent
 // conflict with Storyboard::GetCurrentTime
 #undef GetCurrentTime

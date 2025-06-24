@@ -95,12 +95,14 @@
     <ClCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir);$(GeneratedFilesDir);$(GeneratedFilesDir)UI;$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdcpp20</LanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
     <ClCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir);$(GeneratedFilesDir);$(GeneratedFilesDir)UI;$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -158,8 +160,8 @@
     <ApplicationDefinition Include="UI\App.xaml">
       <FileType>Document</FileType>
     </ApplicationDefinition>
-    <Page Include="Styles.xaml" />
     <Page Include="Themes\MyCustomControl.ResourceDictionary.xaml" />
+    <Page Include="Themes\Styles.xaml" />
     <Page Include="UI\MainPage.xaml" />
     <Page Include="UI\MainWindow.xaml" />
     <Page Include="UI\MyDialog.xaml" />
