@@ -42,6 +42,7 @@ namespace winrt::MyApp::implementation
         for(std::size_t i = 0; i < 30000; i++)
         {
             item = winrt::make<winrt::MyApp::implementation::MyItem>();
+			item.Id(static_cast<std::uint64_t>(i + 1));
             item.Title(L"제목" + std::to_wstring(i + 1));
             item.Subtitle(L"부제목" + std::to_wstring(i + 1));
             item.Description(L"설명" + std::to_wstring(i + 1));
@@ -58,5 +59,14 @@ namespace winrt::MyApp::implementation
     {
         OutputDebugStringW(L"MyViewModel.Items\n");
         return _Items;
+    }
+
+    void MyViewModel::UpdateItems()
+    {
+		std::uint64_t id = 1;
+        for(auto item : _Items)
+        {
+			item.Id(id++);
+        }
     }
 }

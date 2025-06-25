@@ -98,6 +98,7 @@
                             <DataTemplate>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50"/>
                                         <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="400"/>
@@ -105,9 +106,10 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="36" />
                                     </Grid.RowDefinitions>
-                                    <TextBlock Grid.Column="0" Text="제목" FontWeight="Bold" VerticalAlignment="Center" Padding="8,0"/>
-                                    <TextBlock Grid.Column="1" Text="부제목" FontWeight="Bold" VerticalAlignment="Center" Padding="8,0"/>
-                                    <TextBlock Grid.Column="2" Text="설명" FontWeight="Bold" VerticalAlignment="Center" Padding="8,0"/>
+                                    <TextBlock Grid.Column="0" Text="번호" FontWeight="Bold" VerticalAlignment="Center" Padding="8,0"/>
+                                    <TextBlock Grid.Column="1" Text="제목" FontWeight="Bold" VerticalAlignment="Center" Padding="8,0"/>
+                                    <TextBlock Grid.Column="2" Text="부제목" FontWeight="Bold" VerticalAlignment="Center" Padding="8,0"/>
+                                    <TextBlock Grid.Column="3" Text="설명" FontWeight="Bold" VerticalAlignment="Center" Padding="8,0"/>
                                 </Grid>
                             </DataTemplate>
                         </GridView.HeaderTemplate>
@@ -116,6 +118,7 @@
                             <DataTemplate x:DataType="local:MyItem">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50"/>
                                         <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="200"/>
                                         <ColumnDefinition Width="400"/>
@@ -123,9 +126,10 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
-                                    <TextBlock Grid.Column="0" Text="{x:Bind Title}" VerticalAlignment="Center" Padding="8,0"/>
-                                    <TextBlock Grid.Column="1" Text="{x:Bind Subtitle}" VerticalAlignment="Center" Padding="8,0"/>
-                                    <TextBlock Grid.Column="2" Text="{x:Bind Description}" VerticalAlignment="Center" Padding="8,0"/>
+                                    <TextBlock Grid.Column="0" Text="{x:Bind Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Padding="8,0"/>
+                                    <TextBlock Grid.Column="1" Text="{x:Bind Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Padding="8,0"/>
+                                    <TextBlock Grid.Column="2" Text="{x:Bind Subtitle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Padding="8,0"/>
+                                    <TextBlock Grid.Column="3" Text="{x:Bind Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Padding="8,0"/>
                                 </Grid>
                             </DataTemplate>
                         </GridView.ItemTemplate>

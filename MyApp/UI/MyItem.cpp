@@ -40,6 +40,16 @@ namespace winrt::MyApp::implementation
     {
     }
 
+    std::uint64_t MyItem::Id()
+    {
+        return _Id;
+    }
+
+    void MyItem::Id(std::uint64_t const& value)
+    {
+        UpdateValue(L"Id", _Id, value);
+    }
+
     hstring MyItem::Title()
     {
         return _Title;

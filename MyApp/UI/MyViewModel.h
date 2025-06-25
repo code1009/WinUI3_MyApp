@@ -39,9 +39,10 @@ namespace winrt::MyApp::implementation
 
     public:
         winrt::Windows::Foundation::Collections::IObservableVector<winrt::MyApp::MyItem> Items();
-
+        void UpdateItems();
 		std::uint64_t MainWindowHandle() const noexcept { return _MainWindow; }
 		void MainWindowHandle(std::uint64_t value) noexcept { _MainWindow = value; }
+
     };
 }
 

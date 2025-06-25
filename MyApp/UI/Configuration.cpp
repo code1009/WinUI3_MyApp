@@ -9,6 +9,7 @@ using namespace Windows::Foundation::Collections;
 namespace winrt::MyApp
 {
     hstring Config::FeatureName{ L"MyApp" };
+	HWND Config::MainWindowHandle{ nullptr };
     ElementTheme Config::CurrentTheme{ ElementTheme::Default };
 }
 

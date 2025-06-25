@@ -29,6 +29,7 @@ namespace winrt::MyApp::implementation
     struct MyItem : MyItemT<MyItem>
     {
     private:
+        std::uint64_t  _Id{ 0 };
         winrt::hstring _Title;
         winrt::hstring _Subtitle;
         winrt::hstring _Description;
@@ -40,6 +41,8 @@ namespace winrt::MyApp::implementation
         MyItem(hstring const& title, hstring const& subtitle, hstring const& description);
 
     public:
+        std::uint64_t Id();
+        void Id(std::uint64_t const& value);
         hstring Title();
         void Title(hstring const& value);
         hstring Subtitle();

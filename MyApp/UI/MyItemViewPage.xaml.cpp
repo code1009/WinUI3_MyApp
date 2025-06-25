@@ -359,7 +359,7 @@ namespace winrt::MyApp::implementation
         for (auto const& item : itemsToRemove)
         {
             uint32_t itemPosition = 0;
-			auto found = Items().IndexOf(item, itemPosition);
+			auto found = items.IndexOf(item, itemPosition);
             if (!found)
             {
                 inforBarSeverity = InfoBarSeverity::Error;
@@ -368,14 +368,14 @@ namespace winrt::MyApp::implementation
 			}
             else
             {
-                Items().RemoveAt(itemPosition);
+                items.RemoveAt(itemPosition);
             }
         }
 
 
         ItemGridView().SelectedItems().Clear();
         ItemCountTextBlock_Update();
-
+        
 
         inforBarSeverity = InfoBarSeverity::Success;
         inforBarMessage = std::format(L"[DeleteButton] {}개 항목을 삭제했습니다.", selectedItemCount);
@@ -488,11 +488,14 @@ namespace winrt::MyApp::implementation
 
     void MyItemViewPage::ItemCountTextBlock_Update(void)
     {
-		//std::size_t itemCount = MyViewModel::Instance().Items().Size();
-        std::size_t itemCount = Items().Size();
+		//auto items = MyViewModel::Instance().Items();
+        auto items = Items();
+        std::size_t itemCount = items.Size();
 
 		std::wstring message = std::format(L"항목: {} 개", itemCount);
         ItemCountTextBlock().Text(message.c_str());
+
+        MyViewModel::Instance().UpdateItems();
     }
 }
 

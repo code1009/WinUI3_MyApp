@@ -29,6 +29,7 @@
 #endif
 
 #include "NavigationParam.h"
+#include "Configuration.h"
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
@@ -273,7 +274,7 @@ namespace winrt::MyApp::implementation
         HWND hwnd = nullptr;
         //hwnd = GetWindowHandleFromWindow();
 		//hwnd = GetWindowHandleFromXamlRoot(_MainPage.XamlRoot());
-        hwnd = reinterpret_cast<HWND>(MyViewModel::Instance().MainWindowHandle());
+        hwnd = Config::MainWindowHandle;
 
 
         using namespace winrt::Windows::Storage::Pickers;
@@ -306,8 +307,7 @@ namespace winrt::MyApp::implementation
 
     winrt::Windows::Foundation::IAsyncAction Page1::FileSavePicker_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
-        HWND hwnd = nullptr;
-        hwnd = reinterpret_cast<HWND>(MyViewModel::Instance().MainWindowHandle());
+        HWND hwnd = Config::MainWindowHandle;
 
 
         using namespace winrt::Windows::Storage::Pickers;
@@ -337,8 +337,7 @@ namespace winrt::MyApp::implementation
 
     winrt::Windows::Foundation::IAsyncAction Page1::FolderPicker_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
-        HWND hwnd = nullptr;
-        hwnd = reinterpret_cast<HWND>(MyViewModel::Instance().MainWindowHandle());
+        HWND hwnd = Config::MainWindowHandle;
 
 
         using namespace winrt::Windows::Storage::Pickers;

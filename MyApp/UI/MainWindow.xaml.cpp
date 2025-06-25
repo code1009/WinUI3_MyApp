@@ -54,7 +54,7 @@ namespace winrt::MyApp::implementation
         SetWindowSize(hwnd, 1920/2, 1080/2);
         PlacementCenterWindowInMonitorWin32(hwnd);
 
-		MyViewModel::Instance().MainWindowHandle(reinterpret_cast<uint64_t>(hwnd)); // Initialize the ViewModel to populate items
+        Config::MainWindowHandle = hwnd;
     }
 
     HWND MainWindow::GetWindowHandle()

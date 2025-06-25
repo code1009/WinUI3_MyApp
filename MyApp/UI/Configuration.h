@@ -6,6 +6,7 @@ namespace winrt::MyApp
     {
     public:
         static hstring FeatureName;
+        static HWND MainWindowHandle;
         static Microsoft::UI::Xaml::ElementTheme CurrentTheme;
     };
 }
