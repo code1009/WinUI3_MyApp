@@ -36,7 +36,39 @@ namespace winrt::MyApp::implementation
 
 
         _Items = winrt::single_threaded_observable_vector<MyApp::MyItem>();
+        _Items.VectorChanged(
+            //[this](auto const& sender, winrt::Windows::Foundation::Collections::IVectorChangedEventArgs const& args)
+            //[](winrt::Windows::Foundation::Collections::IObservableVector<IInspectable> const& sender,
+                [](winrt::Windows::Foundation::Collections::IObservableVector<MyApp::MyItem> const& sender,
+               winrt::Windows::Foundation::Collections::IVectorChangedEventArgs const& args)
+            {
+                auto collectionChange = args.CollectionChange();
+                auto index = args.Index(); // 변경된 위치(인덱스)
+                std::wstring message;
 
+
+                switch (collectionChange)
+                {
+                case winrt::Windows::Foundation::Collections::CollectionChange::ItemInserted:
+                    message = L"### ItemInserted " + std::to_wstring(index);
+                    break;
+                case winrt::Windows::Foundation::Collections::CollectionChange::ItemRemoved:
+                    message = L"### ItemRemoved " + std::to_wstring(index);
+                    break;
+                case winrt::Windows::Foundation::Collections::CollectionChange::ItemChanged:
+					message = L"### ItemChanged " + std::to_wstring(index);
+                    break;
+                case winrt::Windows::Foundation::Collections::CollectionChange::Reset:
+                    message = L"### Reset " + std::to_wstring(index);
+                    break;
+                default:
+					message = L"### Unknown " + std::to_wstring(static_cast<int>(collectionChange));
+                    break;
+                }
+                OutputDebugStringW(message.c_str());
+                OutputDebugStringW(L"\n");
+            }
+        );
 
         winrt::MyApp::MyItem item;
         for(std::size_t i = 0; i < 30000; i++)
@@ -63,6 +95,8 @@ namespace winrt::MyApp::implementation
 
     void MyViewModel::UpdateItems()
     {
+        return;
+
 		std::uint64_t id = 1;
         for(auto item : _Items)
         {
