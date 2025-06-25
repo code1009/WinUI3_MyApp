@@ -4,8 +4,8 @@
 
 int __stdcall wWinMain(HINSTANCE, HINSTANCE, PWSTR, int)
 {
-    //winrt::init_apartment(winrt::apartment_type::single_threaded);
-    winrt::init_apartment(winrt::apartment_type::multi_threaded);
+    winrt::init_apartment(winrt::apartment_type::single_threaded);
+    //winrt::init_apartment(winrt::apartment_type::multi_threaded); // 한국어 입력 안됨(ms-bug?)
 
     ::winrt::Microsoft::UI::Xaml::Application::Start(
         [](auto&&)

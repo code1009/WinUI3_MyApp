@@ -15,6 +15,10 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
         <!--
         <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="4" Margin="8,8,8,0" HorizontalAlignment="Stretch">
             <Button Click="AddButton_Click">
@@ -126,10 +130,10 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
-                                    <TextBlock Grid.Column="0" Text="{x:Bind Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Padding="8,0"/>
-                                    <TextBlock Grid.Column="1" Text="{x:Bind Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Padding="8,0"/>
-                                    <TextBlock Grid.Column="2" Text="{x:Bind Subtitle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Padding="8,0"/>
-                                    <TextBlock Grid.Column="3" Text="{x:Bind Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Padding="8,0"/>
+                                    <TextBlock Grid.Column="0" TextWrapping="Wrap" Text="{x:Bind Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Padding="8,0"/>
+                                    <TextBlock Grid.Column="1" TextWrapping="Wrap" Text="{x:Bind Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Padding="8,0"/>
+                                    <TextBlock Grid.Column="2" TextWrapping="Wrap" Text="{x:Bind Subtitle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Padding="8,0"/>
+                                    <TextBlock Grid.Column="3" TextWrapping="Wrap" Text="{x:Bind Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Padding="8,0"/>
                                 </Grid>
                             </DataTemplate>
                         </GridView.ItemTemplate>
