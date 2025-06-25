@@ -9,6 +9,7 @@
     mc:Ignorable="d"
     Title="MyApp">
 
+<!--    
     <Grid>
         <Grid>
             <StackPanel Orientation="Horizontal">
@@ -56,5 +57,7 @@
             <local:MainPage/>
         </Grid>
     </Grid>
+-->
+    <local:MainPage/>
     
 </Window>

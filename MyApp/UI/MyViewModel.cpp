@@ -37,36 +37,56 @@ namespace winrt::MyApp::implementation
 
         _Items = winrt::single_threaded_observable_vector<MyApp::MyItem>();
         _Items.VectorChanged(
-            //[this](auto const& sender, winrt::Windows::Foundation::Collections::IVectorChangedEventArgs const& args)
-            //[](winrt::Windows::Foundation::Collections::IObservableVector<IInspectable> const& sender,
-                [](winrt::Windows::Foundation::Collections::IObservableVector<MyApp::MyItem> const& sender,
-               winrt::Windows::Foundation::Collections::IVectorChangedEventArgs const& args)
+            [](winrt::Windows::Foundation::Collections::IObservableVector<MyApp::MyItem> const& sender,
+               winrt::Windows::Foundation::Collections::IVectorChangedEventArgs const& eventArgs)
             {
-                auto collectionChange = args.CollectionChange();
-                auto index = args.Index(); // 변경된 위치(인덱스)
+                auto setItemsId =
+                    [](winrt::Windows::Foundation::Collections::IObservableVector<MyApp::MyItem> const& items, std::uint64_t start)
+                    {
+                        std::uint64_t itemCount = items.Size();
+                        for (std::uint64_t i = start; i < itemCount; i++)
+                        {
+                            auto item = items.GetAt(static_cast<std::uint32_t>(i));
+                            item.Id(i + 1);
+                        }
+                    }
+                ;
+
+                auto items = sender;
+                auto collectionChange = eventArgs.CollectionChange();
+                auto index = eventArgs.Index();
+
                 std::wstring message;
-
-
                 switch (collectionChange)
                 {
                 case winrt::Windows::Foundation::Collections::CollectionChange::ItemInserted:
-                    message = L"### ItemInserted " + std::to_wstring(index);
+                    //message = L"### ItemInserted " + std::to_wstring(index);
+                    //OutputDebugStringW(message.c_str());
+                    //OutputDebugStringW(L"\n");
+                    setItemsId(items, index);
                     break;
                 case winrt::Windows::Foundation::Collections::CollectionChange::ItemRemoved:
                     message = L"### ItemRemoved " + std::to_wstring(index);
+                    OutputDebugStringW(message.c_str());
+                    OutputDebugStringW(L"\n");
+                    setItemsId(items, index);
                     break;
                 case winrt::Windows::Foundation::Collections::CollectionChange::ItemChanged:
 					message = L"### ItemChanged " + std::to_wstring(index);
+                    OutputDebugStringW(message.c_str());
+                    OutputDebugStringW(L"\n");
                     break;
                 case winrt::Windows::Foundation::Collections::CollectionChange::Reset:
                     message = L"### Reset " + std::to_wstring(index);
+                    OutputDebugStringW(message.c_str());
+                    OutputDebugStringW(L"\n");
                     break;
                 default:
 					message = L"### Unknown " + std::to_wstring(static_cast<int>(collectionChange));
+                    OutputDebugStringW(message.c_str());
+                    OutputDebugStringW(L"\n");
                     break;
                 }
-                OutputDebugStringW(message.c_str());
-                OutputDebugStringW(L"\n");
             }
         );
 
@@ -74,8 +94,8 @@ namespace winrt::MyApp::implementation
         for(std::size_t i = 0; i < 30000; i++)
         {
             item = winrt::make<winrt::MyApp::implementation::MyItem>();
-			item.Id(static_cast<std::uint64_t>(i + 1));
-            item.Title(L"제목" + std::to_wstring(i + 1));
+			//item.Id(static_cast<std::uint64_t>(i + 1));
+            item.Title(L"Title" + std::to_wstring(i + 1));
             item.Subtitle(L"부제목" + std::to_wstring(i + 1));
             item.Description(L"설명" + std::to_wstring(i + 1));
             _Items.Append(item);
@@ -91,16 +111,5 @@ namespace winrt::MyApp::implementation
     {
         OutputDebugStringW(L"MyViewModel.Items\n");
         return _Items;
-    }
-
-    void MyViewModel::UpdateItems()
-    {
-        return;
-
-		std::uint64_t id = 1;
-        for(auto item : _Items)
-        {
-			item.Id(id++);
-        }
     }
 }

@@ -26,7 +26,7 @@
             <Button Click="EditButton_Click">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <SymbolIcon Symbol="Edit"/>
-                    <TextBlock Text="수정" Margin="4,0,0,0" VerticalAlignment="Center"/>
+                    <TextBlock Text="편집" Margin="4,0,0,0" VerticalAlignment="Center"/>
                 </StackPanel>
             </Button>
             <Button Click="DeleteButton_Click">
@@ -53,7 +53,7 @@
         <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="4" Margin="8,8,8,0" HorizontalAlignment="Stretch">
             <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right">
                 <AppBarButton Icon="Add" Label="추가" Click="AddButton_Click"/>
-                <AppBarButton Icon="Edit" Label="수정" Click="EditButton_Click"/>
+                <AppBarButton Icon="Edit" Label="편집" Click="EditButton_Click"/>
                 <AppBarButton Icon="Share" Label="삭제" Click="DeleteButton_Click"/>
                 <AppBarButton Icon="Clear" Label="전체 삭제" Click="DeleteAllButton_Click"/>
                 <AppBarButton Icon="ClearSelection" Label="전체 선택 해제" Click="UnselectAllButton_Click"/>
@@ -69,7 +69,7 @@
             <Button Click="FindButton_Click">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <SymbolIcon Symbol="Find"/>
-                    <TextBlock Text="검색" Margin="4,0,0,0" VerticalAlignment="Center"/>
+                    <TextBlock Text="검색" Margin="4,0,0,0" VerticalAlignment="Center" Language="ko-KR"/>
                 </StackPanel>
             </Button>
         </StackPanel>
@@ -140,17 +140,17 @@
                             </ItemsPanelTemplate>
                         </GridView.ItemsPanel>
 
-                <GridView.Resources>
+                        <GridView.Resources>
                             <MenuFlyout x:Name="Item_MenuFlyout">
                                 <MenuFlyout.Items>
-                            <MenuFlyoutItem x:Uid="Item_MenuFlyout_idEdit"   x:Name="Item_MenuFlyout_Edit"   Text="Edit"   Click="Item_MenuFlyout_Edit" />
-                            <MenuFlyoutItem x:Uid="Item_MenuFlyout_idRemove" x:Name="Item_MenuFlyout_Remove" Text="Remove" Click="Item_MenuFlyout_Remove" />
-                            <MenuFlyoutItem x:Uid="Item_MenuFlyout_idOpen"   x:Name="Item_MenuFlyout_Open"   Text="Open"   Click="Item_MenuFlyout_Open" />
+                                    <MenuFlyoutItem x:Name="Item_MenuFlyout_Edit"   Text="Edit"   Click="Item_MenuFlyout_Edit" />
+                                    <MenuFlyoutItem x:Name="Item_MenuFlyout_Remove" Text="Remove" Click="Item_MenuFlyout_Remove" />
+                                    <MenuFlyoutItem x:Name="Item_MenuFlyout_Open"   Text="Open"   Click="Item_MenuFlyout_Open" />
                                 </MenuFlyout.Items>
                             </MenuFlyout>
-                </GridView.Resources>
+                        </GridView.Resources>
                         
-            </GridView>
+                    </GridView>
 
                 </Grid>
 

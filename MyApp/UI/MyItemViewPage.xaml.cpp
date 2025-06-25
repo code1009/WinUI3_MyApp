@@ -86,9 +86,14 @@ namespace winrt::MyApp::implementation
 		}
     }
 #endif
+
+    void MyItemViewPage::InfoBarMessage(std::wstring const& /*title*/, std::wstring const& message, InfoBarSeverity severity)
+    {
+        _MainPage.NotifyUser(message.c_str(), severity);
+    }
+
     void MyItemViewPage::ItemGridView_RightTapped(IInspectable const& sender, RightTappedRoutedEventArgs eventArgs)
     {
-        InfoBarSeverity inforBarSeverity;
         std::wstring inforBarMessage;
 
 
@@ -109,17 +114,15 @@ namespace winrt::MyApp::implementation
                     auto found = items.GetAt(index);
                     if (!found)
                     {
-                        inforBarSeverity = InfoBarSeverity::Error;
-                        inforBarMessage = std::format(L"[RightTapped] 항목을 찾을 수 없습니다.");
-                        _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+                        inforBarMessage = std::format(L"항목을 찾을 수 없습니다.");
+                        InfoBarMessage(L"RightTapped", inforBarMessage, InfoBarSeverity::Error);
 
                         _RightTappedItem = nullptr;
                     }
                     else
                     {
-                        inforBarSeverity = InfoBarSeverity::Success;
-                        inforBarMessage = std::format(L"[RightTapped] {}번째 항목에서 찾았습니다.", index + 1);
-                        _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+                        inforBarMessage = std::format(L"{}번째 항목에서 찾았습니다.", index + 1);
+                        InfoBarMessage(L"RightTapped", inforBarMessage);
 
                         _RightTappedItem = found;
                     }
@@ -130,7 +133,6 @@ namespace winrt::MyApp::implementation
 
     void MyItemViewPage::Item_MenuFlyout_Open(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
-        InfoBarSeverity inforBarSeverity;
         std::wstring inforBarMessage;
 
 
@@ -142,22 +144,19 @@ namespace winrt::MyApp::implementation
             auto found = items.IndexOf(item, itemPosition);
             if (!found)
             {
-                inforBarSeverity = InfoBarSeverity::Error;
-                inforBarMessage = std::format(L"[MenuOpen] 항목을 찾을 수 없습니다.");
-                _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+                inforBarMessage = std::format(L"항목을 찾을 수 없습니다.");
+                InfoBarMessage(L"메뉴-열기", inforBarMessage, InfoBarSeverity::Error);
             }
             else
             {
-                inforBarSeverity = InfoBarSeverity::Success;
-                inforBarMessage = std::format(L"[MenuOpen] {}번째 항목에서 찾았습니다.", itemPosition + 1);
-                _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+                inforBarMessage = std::format(L"{}번째 항목에서 찾았습니다.", itemPosition + 1);
+                InfoBarMessage(L"메뉴-열기", inforBarMessage);
             }
         }
         else
         {
-            inforBarSeverity = InfoBarSeverity::Error;
-            inforBarMessage = std::format(L"[MenuOpen] 대상 항목을 찾을 수 없습니다.");
-            _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+            inforBarMessage = std::format(L"대상 항목을 찾을 수 없습니다.");
+            InfoBarMessage(L"메뉴-열기", inforBarMessage, InfoBarSeverity::Error);
         }
     }
 
@@ -171,7 +170,6 @@ namespace winrt::MyApp::implementation
 
     void MyItemViewPage::UnselectAllButton_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
-        InfoBarSeverity inforBarSeverity;
         std::wstring inforBarMessage;
 
 
@@ -181,21 +179,18 @@ namespace winrt::MyApp::implementation
         {
             selectedItems.Clear();
      
-            inforBarSeverity = InfoBarSeverity::Success;
-            inforBarMessage = std::format(L"[Button] {}개의 항목을 선택 해제 했습니다.", selectedItemCount);
-            _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+            inforBarMessage = std::format(L"{}개의 항목을 선택 해제 했습니다.", selectedItemCount);
+            InfoBarMessage(L"전체 선택 해제", inforBarMessage);
         }
         else
         {
-            inforBarSeverity = InfoBarSeverity::Warning;
-            inforBarMessage = std::format(L"[Button] 선택 항목이 없습니다.");
-            _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+            inforBarMessage = std::format(L"선택 항목이 없습니다.");
+            InfoBarMessage(L"전체 선택 해제", inforBarMessage, InfoBarSeverity::Warning);
         }
     }
 
     void MyItemViewPage::AddButton_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
-        InfoBarSeverity inforBarSeverity;
         std::wstring inforBarMessage;
 
 
@@ -204,9 +199,8 @@ namespace winrt::MyApp::implementation
         auto selectedItemCount = selectedItems.Size();
         if (selectedItemCount > 1)
         {
-            inforBarSeverity = InfoBarSeverity::Warning;
-            inforBarMessage = std::format(L"[AddButton] 한 개의 항목을 선택 하십시오.");
-            _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+            inforBarMessage = std::format(L"한 개의 항목을 선택 하십시오.");
+            InfoBarMessage(L"추가", inforBarMessage, InfoBarSeverity::Warning);
         }
         else if (selectedItemCount == 1)
         {
@@ -215,25 +209,22 @@ namespace winrt::MyApp::implementation
             auto found = items.IndexOf(item, itemPosition);
             if (!found)
             {
-                inforBarSeverity = InfoBarSeverity::Error;
-                inforBarMessage = std::format(L"[AddButton] 항목을 찾을 수 없습니다.");
-                _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+                inforBarMessage = std::format(L"항목을 찾을 수 없습니다.");
+                InfoBarMessage(L"추가", inforBarMessage, InfoBarSeverity::Error);
             }
             else
             {
-                inforBarSeverity = InfoBarSeverity::Success;
-                inforBarMessage = std::format(L"[AddButton] {}번째 항목 뒤에 추가합니다.", itemPosition + 1);
-                _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+                inforBarMessage = std::format(L"{}번째 항목에 추가 합니다.", itemPosition + 1);
+                InfoBarMessage(L"추가", inforBarMessage);
 
 
-                AddItem(itemPosition + 1);
+                AddItem(itemPosition);
             }
         }
         else if (selectedItemCount == 0)
         {
-            inforBarSeverity = InfoBarSeverity::Success;
-            inforBarMessage = std::format(L"[AddButton] 맨 막지막 위치에 추가합니다.");
-            _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+            inforBarMessage = std::format(L"막지막 항목 위치에 추가합니다.");
+            InfoBarMessage(L"추가", inforBarMessage);
 
 
             AddItem(Items().Size());
@@ -242,7 +233,6 @@ namespace winrt::MyApp::implementation
 
     void MyItemViewPage::EditButton_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
-        InfoBarSeverity inforBarSeverity;
         std::wstring inforBarMessage;
 
 
@@ -251,9 +241,8 @@ namespace winrt::MyApp::implementation
         auto selectedItemCount = selectedItems.Size();
         if (selectedItemCount > 1)
         {
-            inforBarSeverity = InfoBarSeverity::Warning;
-            inforBarMessage = std::format(L"[EditButton] 한 개의 항목을 선택 하십시오.");
-            _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+            inforBarMessage = std::format(L"한 개의 항목을 선택 하십시오.");
+            InfoBarMessage(L"편집", inforBarMessage, InfoBarSeverity::Warning);
         }
         else if (selectedItemCount == 1)
         {
@@ -262,15 +251,13 @@ namespace winrt::MyApp::implementation
             auto found = items.IndexOf(item, itemPosition);
             if (!found)
             {
-                inforBarSeverity = InfoBarSeverity::Error;
-                inforBarMessage = std::format(L"[EditButton] 항목을 찾을 수 없습니다.");
-                _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+                inforBarMessage = std::format(L"항목을 찾을 수 없습니다.");
+                InfoBarMessage(L"편집", inforBarMessage, InfoBarSeverity::Error);
             }
             else
             {
-                inforBarSeverity = InfoBarSeverity::Success;
-                inforBarMessage = std::format(L"[EditButton] {}번째 항목을 편집합니다.", itemPosition + 1);
-                _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+                inforBarMessage = std::format(L"{}번째 항목을 편집합니다.", itemPosition + 1);
+                InfoBarMessage(L"편집", inforBarMessage);
 
 
                 EditItem(itemPosition);
@@ -278,9 +265,8 @@ namespace winrt::MyApp::implementation
         }
         else if (selectedItemCount == 0)
         {
-            inforBarSeverity = InfoBarSeverity::Warning;
-            inforBarMessage = std::format(L"[EditButton] 선택 항목이 없습니다.");
-            _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+            inforBarMessage = std::format(L"선택 항목이 없습니다.");
+            InfoBarMessage(L"편집", inforBarMessage, InfoBarSeverity::Warning);
         }
     }
 
@@ -291,7 +277,7 @@ namespace winrt::MyApp::implementation
         item.Subtitle(L"부제목");
         item.Description(L"설명");
         
-        if (position >= Items().Size())
+        if (position > Items().Size())
         {
             Items().Append(item);
         }
@@ -309,15 +295,13 @@ namespace winrt::MyApp::implementation
 
     void MyItemViewPage::EditItem(uint32_t position)
     {
-        InfoBarSeverity inforBarSeverity;
         std::wstring inforBarMessage;
 
 
         if (position >= Items().Size())
         {
-            inforBarSeverity = InfoBarSeverity::Error;
-            inforBarMessage = std::format(L"[Edit] 항목의 위치가 잘못되었습니다.");
-            _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+            inforBarMessage = std::format(L"항목의 위치가 잘못되었습니다.");
+            InfoBarMessage(L"편집", inforBarMessage, InfoBarSeverity::Error);
         }
         else
         {
@@ -333,7 +317,6 @@ namespace winrt::MyApp::implementation
 
     void MyItemViewPage::DeleteButton_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
-        InfoBarSeverity inforBarSeverity;
         std::wstring inforBarMessage;
 
 
@@ -341,9 +324,8 @@ namespace winrt::MyApp::implementation
         uint32_t selectedItemCount = selectedItems.Size();
         if (selectedItemCount == 0)
         {
-            inforBarSeverity = InfoBarSeverity::Warning;
-            inforBarMessage = std::format(L"[DeleteButton] 항목을 선택 하십시오.");
-            _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+            inforBarMessage = std::format(L"항목을 선택 하십시오.");
+            InfoBarMessage(L"삭제", inforBarMessage, InfoBarSeverity::Warning);
             return;
         }
 
@@ -362,9 +344,8 @@ namespace winrt::MyApp::implementation
 			auto found = items.IndexOf(item, itemPosition);
             if (!found)
             {
-                inforBarSeverity = InfoBarSeverity::Error;
-                inforBarMessage = std::format(L"[DeleteButton] 항목을 찾을 수 없습니다. : {}", item.Title());
-                _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+                inforBarMessage = std::format(L"항목을 찾을 수 없습니다. : {}", item.Title());
+                InfoBarMessage(L"삭제", inforBarMessage, InfoBarSeverity::Error);
 			}
             else
             {
@@ -377,14 +358,12 @@ namespace winrt::MyApp::implementation
         ItemCountTextBlock_Update();
         
 
-        inforBarSeverity = InfoBarSeverity::Success;
-        inforBarMessage = std::format(L"[DeleteButton] {}개 항목을 삭제했습니다.", selectedItemCount);
-        _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+        inforBarMessage = std::format(L"{}개 항목을 삭제했습니다.", selectedItemCount);
+        InfoBarMessage(L"삭제", inforBarMessage);
     }
 
     void MyItemViewPage::DeleteAllButton_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
-        InfoBarSeverity inforBarSeverity;
         std::wstring inforBarMessage;
 
 
@@ -392,9 +371,8 @@ namespace winrt::MyApp::implementation
         uint32_t itemCount = items.Size();
         if (itemCount == 0)
         {
-            inforBarSeverity = InfoBarSeverity::Warning;
-            inforBarMessage = std::format(L"[DeleteAllButton] 대상 항목이 비었습니다.");
-            _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+            inforBarMessage = std::format(L"대상 항목이 없습니다.");
+            InfoBarMessage(L"전체 삭제", inforBarMessage, InfoBarSeverity::Warning);
         }
         else
         {
@@ -402,9 +380,8 @@ namespace winrt::MyApp::implementation
             ItemGridView().SelectedItems().Clear();
             ItemCountTextBlock_Update();
 
-            inforBarSeverity = InfoBarSeverity::Success;
-            inforBarMessage = std::format(L"[DeleteAllButton] {}개 항목을 삭제했습니다.", itemCount);
-            _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+            inforBarMessage = std::format(L"{}개 항목을 삭제했습니다.", itemCount);
+            InfoBarMessage(L"전체 삭제", inforBarMessage);
         }
     }
 
@@ -420,16 +397,22 @@ namespace winrt::MyApp::implementation
 
     void MyItemViewPage::FindButton_Click(IInspectable const& /*sender*/, RoutedEventArgs const& /*eventArgs*/)
     {
-        InfoBarSeverity inforBarSeverity;
+/*
+        auto language = winrt::Windows::Globalization::ApplicationLanguages::Languages();;
+        std::wstring message;
+        message = language;
+        message += L"\n";
+//        OutputDebugStringW(message.c_str());
+*/
+
         std::wstring inforBarMessage;
 
         
         std::wstring keyword = FindTextBox().Text().c_str();
         if (keyword.empty())
         {
-            inforBarSeverity = InfoBarSeverity::Warning;
-            inforBarMessage = std::format(L"[FindButton] 검색어가 비어 있습니다.");
-            _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+            inforBarMessage = std::format(L"검색어가 비어 있습니다.");
+            InfoBarMessage(L"검색", inforBarMessage, InfoBarSeverity::Warning);
             return;
         }
 
@@ -438,9 +421,8 @@ namespace winrt::MyApp::implementation
         uint32_t itemCount = items.Size();
         if (itemCount == 0)
         {
-            inforBarSeverity = InfoBarSeverity::Warning;
-            inforBarMessage = std::format(L"[FindButton] 대상 항목이 비었습니다.");
-            _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+            inforBarMessage = std::format(L"대상 항목이 없습니다.");
+            InfoBarMessage(L"검색", inforBarMessage, InfoBarSeverity::Warning);
             return;
         }
 
@@ -454,17 +436,15 @@ namespace winrt::MyApp::implementation
                 auto found = items.IndexOf(item, itemPosition);
                 if (!found)
                 {
-                    inforBarSeverity = InfoBarSeverity::Error;
-                    inforBarMessage = std::format(L"[FindButton] 검색 할 항목을 찾을 수 없습니다. : {}", item.Title());
-                    _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+                    inforBarMessage = std::format(L"항목을 찾을 수 없습니다. : {}", item.Title());
+                    InfoBarMessage(L"검색", inforBarMessage, InfoBarSeverity::Error);
                 }
                 else
                 {
-                    inforBarSeverity = InfoBarSeverity::Success;
-                    inforBarMessage = std::format(L"[FindButton] {}번쨰 항목 위치에 \'{}\'에 해당하는 항목을 찾았습니다.",
-						itemPosition + 1, keyword
+                    inforBarMessage = std::format(L"{}번쨰 항목 위치에 해당 항목을 찾았습니다.",
+						itemPosition + 1
                     );
-                    _MainPage.NotifyUser(inforBarMessage, inforBarSeverity);
+                    InfoBarMessage(L"검색", inforBarMessage);
 
 
                     ItemGridView().ScrollIntoView(item);
@@ -473,9 +453,13 @@ namespace winrt::MyApp::implementation
                     //auto rowHeight = ItemGridView_GetItemRowHeight(itemPosition) + 4.0;
                     //ItemGridViewScrollViewer().ChangeView(nullptr, static_cast<double>(36.0 + (itemPosition) * rowHeight), nullptr);
                 }
-                break;
+                return;
 			}            
         }
+
+
+        inforBarMessage = std::format(L"검색 항목을 찾을 수 없습니다.");
+        InfoBarMessage(L"검색", inforBarMessage, InfoBarSeverity::Warning);
     }
 
     void MyItemViewPage::FindTextBox_KeyDown(IInspectable const& /*sender*/, KeyRoutedEventArgs const& eventArgs)
@@ -494,8 +478,6 @@ namespace winrt::MyApp::implementation
 
 		std::wstring message = std::format(L"항목: {} 개", itemCount);
         ItemCountTextBlock().Text(message.c_str());
-
-        MyViewModel::Instance().UpdateItems();
     }
 }
 

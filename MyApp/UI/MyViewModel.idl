@@ -10,6 +10,5 @@ namespace MyApp
         MyViewModel();
 
         Windows.Foundation.Collections.IObservableVector<MyItem> Items{ get; };
-		void UpdateItems(void);
     }
 }

@@ -46,6 +46,8 @@ namespace winrt::MyApp::implementation
 
     public:
 		void ItemCountTextBlock_Update(void);
+        void InfoBarMessage(std::wstring const& title, std::wstring const& message,
+            Microsoft::UI::Xaml::Controls::InfoBarSeverity severity = Microsoft::UI::Xaml::Controls::InfoBarSeverity::Success);
     };
 }
 
